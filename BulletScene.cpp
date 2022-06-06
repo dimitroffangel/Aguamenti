@@ -17,7 +17,7 @@ void BulletScene::AddParticle(ID3D11DeviceContext1& deviceContext, const Aguamen
     m_ParticlesMeshes.push_back(std::move(DirectX::GeometricPrimitive::CreateSphere(&deviceContext, 0.1f)));
 }
 
-void BulletScene::UpdateParticles(const Aguamenti::Real deltaTime)
+void BulletScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
 {
     for (Particle& particle : m_Particles)
     {
@@ -25,7 +25,7 @@ void BulletScene::UpdateParticles(const Aguamenti::Real deltaTime)
     }
 }
 
-void BulletScene::DrawParticles(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection)
+void BulletScene::DrawPhysicsObjects(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection)
 {
     assert(m_Particles.size() == m_ParticlesMeshes.size());
 

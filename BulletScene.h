@@ -2,16 +2,16 @@
 #define AGUAMENTI_BULLETSCENE_H
 
 #include "Particle.h"
-#include "Precision.h"
+#include "PhysicsScene.h"
 
-class BulletScene
+class BulletScene : public PhysicsScene
 {
 	static constexpr Aguamenti::Real BULLET_BURST_TIME = 0.3f;
 
 public:
-	void UpdateParticles(const Aguamenti::Real deltaTime);
-	void DrawParticles(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection);
-	void HandleMouseEvent(const float deltaTime, const DirectX::Mouse::State mouseState, ID3D11DeviceContext1& deviceContext);
+	virtual void UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext) override;
+	virtual void DrawPhysicsObjects(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection) override;
+	virtual void HandleMouseEvent(const float deltaTime, const DirectX::Mouse::State mouseState, ID3D11DeviceContext1& deviceContext) override;
 
 private:
 	void AddParticle(ID3D11DeviceContext1& deviceContext, const Aguamenti::Real spawnPositionX, const Aguamenti::Real spawnPositionY);

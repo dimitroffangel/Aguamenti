@@ -4,6 +4,8 @@
 
 #include "pch.h"
 #include "Game.h"
+#include "FireworkScene.h"
+#include "BulletScene.h"
 
 extern void ExitGame() noexcept;
 
@@ -19,7 +21,7 @@ Game::Game() noexcept(false)
     //   Add DX::DeviceResources::c_EnableHDR for HDR10 display.
     m_DeviceResources->RegisterDeviceNotify(this);
 
-    m_BulletScene = std::make_unique<FireworkScene>();
+    m_BulletScene = std::make_unique<BulletScene>();
 }
 
 // Initialize the Direct3D resources required to run.
@@ -64,7 +66,7 @@ void Game::Update(DX::StepTimer const& timer)
     HandleMouseEvent(elapsedTime);
     ID3D11DeviceContext1* const deviceContext = m_DeviceResources->GetD3DDeviceContext();
     assert(deviceContext != nullptr);
-    m_BulletScene->UpdateFireworks(elapsedTime, *deviceContext);
+    m_BulletScene->UpdatePhysicsObjects(elapsedTime, *deviceContext);
 }
 #pragma endregion
 
@@ -85,7 +87,7 @@ void Game::Render()
     assert(deviceContext != nullptr);
 
     // TODO: Add your rendering code here.
-    m_BulletScene->DrawFireworks(m_View, m_Projection);
+    m_BulletScene->DrawPhysicsObjects(m_View, m_Projection);
 
     m_DeviceResources->PIXEndEvent();
     // Show the new frame.

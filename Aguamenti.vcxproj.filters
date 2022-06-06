@@ -24,6 +24,7 @@
     <ClInclude Include="BulletScene.h" />
     <ClInclude Include="Firework.h" />
     <ClInclude Include="FireworkScene.h" />
+    <ClInclude Include="PhysicsScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

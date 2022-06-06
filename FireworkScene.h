@@ -1,17 +1,17 @@
 #ifndef AGUAMENTI_FIREWORKSCENE_H
 #define AGUAMENTI_FIREWORKSCENE_H
 
+#include "PhysicsScene.h"
 #include "Firework.h"
-#include "Precision.h"
 
-class FireworkScene
+class FireworkScene : public PhysicsScene
 {
 	static constexpr size_t MAXIMUM_NUMBER_OF_FIREWORKS = 800;
 
 public:
-	void UpdateFireworks(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext);
-	void DrawFireworks(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection);
-	void HandleMouseEvent(const float deltaTime, const DirectX::Mouse::State mouseState, ID3D11DeviceContext1& deviceContext);
+	virtual void UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext) override;
+	virtual void DrawPhysicsObjects(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection) override;
+	virtual void HandleMouseEvent(const float deltaTime, const DirectX::Mouse::State mouseState, ID3D11DeviceContext1& deviceContext) override;
 
 private:
 	void CreateFirework(const Firework& firework, ID3D11DeviceContext1& deviceContext);

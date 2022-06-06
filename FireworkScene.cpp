@@ -3,7 +3,7 @@
 
 #include <algorithm>
 
-void FireworkScene::UpdateFireworks(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
+void FireworkScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
 {
 	const size_t currentNumberOfFireworksBeforeUpdate = m_Fireworks.size();
 	for (size_t i = 0; i < currentNumberOfFireworksBeforeUpdate; ++i)
@@ -30,7 +30,7 @@ void FireworkScene::UpdateFireworks(const Aguamenti::Real deltaTime, ID3D11Devic
 		m_Fireworks.end());
 }
 
-void FireworkScene::DrawFireworks(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection)
+void FireworkScene::DrawPhysicsObjects(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection)
 {
 	assert(m_Fireworks.size() == m_FireworkMeshes.size());
 

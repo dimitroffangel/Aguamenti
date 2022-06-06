@@ -187,6 +187,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PhysicsScene.h" />
     <ClInclude Include="Precision.h" />
     <ClInclude Include="StepTimer.h" />
   </ItemGroup>
