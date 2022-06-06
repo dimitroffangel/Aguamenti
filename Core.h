@@ -9,10 +9,10 @@ namespace Aguamenti
 {
 	class Vector3
 	{
-		public:
-			Real m_X;
-			Real m_Y;
-			Real m_Z;
+	public:
+		Real m_X;
+		Real m_Y;
+		Real m_Z;
 
 
 		explicit Vector3()
@@ -52,8 +52,8 @@ namespace Aguamenti
 
 		void AddScaledVector(const Vector3& vectorToBeScaled, const Real multiplier)
 		{
-			m_X	+= multiplier * vectorToBeScaled.m_X;
-			m_Y	+= multiplier * vectorToBeScaled.m_Y;
+			m_X += multiplier * vectorToBeScaled.m_X;
+			m_Y += multiplier * vectorToBeScaled.m_Y;
 			m_Z += multiplier * vectorToBeScaled.m_Z;
 		}
 
@@ -65,8 +65,8 @@ namespace Aguamenti
 		// multiply the vector with the rhs' coordinates
 		void ComponentProductModify(const Vector3& rhs)
 		{
-			m_X	*= rhs.m_X;
-			m_Y	*= rhs.m_Y;
+			m_X *= rhs.m_X;
+			m_Y *= rhs.m_Y;
 			m_Z *= rhs.m_Z;
 		}
 
@@ -125,7 +125,7 @@ namespace Aguamenti
 
 		Real operator*(const Vector3& rhs) const
 		{
-			return m_X * rhs.m_X +  m_Y * rhs.m_Y + m_Z * rhs.m_Z;
+			return m_X * rhs.m_X + m_Y * rhs.m_Y + m_Z * rhs.m_Z;
 		}
 
 		Vector3 operator+(const Vector3& rhs) const

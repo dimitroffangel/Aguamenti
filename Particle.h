@@ -4,21 +4,32 @@
 #include "Core.h"
 #include "Precision.h"
 
-using namespace Aguamenti;
-
 class Particle
 {
-private:
-	Vector3 m_CurrentPosition;
-	Vector3 m_Velocity;
-	Vector3 m_Acceleration;
-	Vector3 m_AccumulatedForce;
+public:
+	Particle()
+	{
 
-	Real m_Damping;
-	Real m_InverseMass;
+	}
+
+	Particle(const Aguamenti::Vector3& initialPosition, const Aguamenti::Vector3& velocity, const Aguamenti::Vector3& acceleration, const Aguamenti::Real damping, const Aguamenti::Real inverseMass)
+		: m_CurrentPosition(initialPosition), m_Velocity(velocity), m_Acceleration(acceleration), m_Damping(damping), m_InverseMass(inverseMass)
+
+	{
+
+	}
 
 public:
-	void Integrate(const Real deltaTime);
+	Aguamenti::Vector3 m_CurrentPosition;
+	Aguamenti::Vector3 m_Velocity;
+	Aguamenti::Vector3 m_Acceleration;
+	Aguamenti::Vector3 m_AccumulatedForce;
+
+	Aguamenti::Real m_Damping;
+	Aguamenti::Real m_InverseMass;
+
+public:
+	void Integrate(const Aguamenti::Real deltaTime);
 };
 
 #endif
