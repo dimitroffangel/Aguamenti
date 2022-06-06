@@ -19,7 +19,7 @@ Game::Game() noexcept(false)
     //   Add DX::DeviceResources::c_EnableHDR for HDR10 display.
     m_DeviceResources->RegisterDeviceNotify(this);
 
-    m_BulletScene = std::make_unique<BulletScene>();
+    m_BulletScene = std::make_unique<FireworkScene>();
 }
 
 // Initialize the Direct3D resources required to run.
@@ -62,7 +62,9 @@ void Game::Update(DX::StepTimer const& timer)
 
     // TODO: Add your game logic here.
     HandleMouseEvent(elapsedTime);
-    m_BulletScene->UpdateParticles(elapsedTime);
+    ID3D11DeviceContext1* const deviceContext = m_DeviceResources->GetD3DDeviceContext();
+    assert(deviceContext != nullptr);
+    m_BulletScene->UpdateFireworks(elapsedTime, *deviceContext);
 }
 #pragma endregion
 
@@ -83,7 +85,7 @@ void Game::Render()
     assert(deviceContext != nullptr);
 
     // TODO: Add your rendering code here.
-    m_BulletScene->DrawParticles(m_View, m_Projection);
+    m_BulletScene->DrawFireworks(m_View, m_Projection);
 
     m_DeviceResources->PIXEndEvent();
     // Show the new frame.
@@ -141,7 +143,7 @@ void Game::OnResuming()
 
 void Game::OnWindowMoved()
 {
-    auto const deviceResourcesOutputSize = m_DeviceResources->GetOutputSize();
+    const auto deviceResourcesOutputSize = m_DeviceResources->GetOutputSize();
     m_DeviceResources->WindowSizeChanged(deviceResourcesOutputSize.right, deviceResourcesOutputSize.bottom);
 }
 

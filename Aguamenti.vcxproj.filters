@@ -22,6 +22,8 @@
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Precision.h" />
     <ClInclude Include="BulletScene.h" />
+    <ClInclude Include="Firework.h" />
+    <ClInclude Include="FireworkScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -32,6 +34,9 @@
     </ClCompile>
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="BulletScene.cpp" />
+    <ClCompile Include="Firework.cpp" />
+    <ClCompile Include="FireworkScene.cpp" />
+    <ClCompile Include="Precision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

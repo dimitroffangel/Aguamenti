@@ -7,6 +7,7 @@
 #include "DeviceResources.h"
 #include "StepTimer.h"
 #include "BulletScene.h"
+#include "FireworkScene.h"
 
 
 // A basic game implementation that creates a D3D11 device and
@@ -72,5 +73,5 @@ private:
     std::unique_ptr<DirectX::Mouse> m_Mouse;
     
     // Physics Specific
-    std::unique_ptr<BulletScene> m_BulletScene;
+    std::unique_ptr<FireworkScene> m_BulletScene;
 };
