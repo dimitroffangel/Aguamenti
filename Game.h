@@ -72,5 +72,5 @@ private:
     std::unique_ptr<DirectX::Mouse> m_Mouse;
     
     // Physics Specific
-    std::unique_ptr<PhysicsScene> m_BulletScene;
+    std::unique_ptr<PhysicsScene> m_PhysicsScene;
 };

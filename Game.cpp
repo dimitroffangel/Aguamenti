@@ -21,7 +21,10 @@ Game::Game() noexcept(false)
     //   Add DX::DeviceResources::c_EnableHDR for HDR10 display.
     m_DeviceResources->RegisterDeviceNotify(this);
 
-    m_BulletScene = std::make_unique<BulletScene>();
+    m_PhysicsScene = std::make_unique<FireworkScene>();
+    m_PhysicsScene->m_Gravity.m_X = 0;
+    m_PhysicsScene->m_Gravity.m_Y = -0.002f;
+    m_PhysicsScene->m_Gravity.m_Z = 0;
 }
 
 // Initialize the Direct3D resources required to run.
@@ -66,7 +69,7 @@ void Game::Update(DX::StepTimer const& timer)
     HandleMouseEvent(elapsedTime);
     ID3D11DeviceContext1* const deviceContext = m_DeviceResources->GetD3DDeviceContext();
     assert(deviceContext != nullptr);
-    m_BulletScene->UpdatePhysicsObjects(elapsedTime, *deviceContext);
+    m_PhysicsScene->UpdatePhysicsObjects(elapsedTime, *deviceContext);
 }
 #pragma endregion
 
@@ -87,7 +90,7 @@ void Game::Render()
     assert(deviceContext != nullptr);
 
     // TODO: Add your rendering code here.
-    m_BulletScene->DrawPhysicsObjects(m_View, m_Projection);
+    m_PhysicsScene->DrawPhysicsObjects(m_View, m_Projection);
 
     m_DeviceResources->PIXEndEvent();
     // Show the new frame.
@@ -181,7 +184,7 @@ void Game::HandleMouseEvent(const float deltaTime)
     const DirectX::Mouse::State mouseState = m_Mouse->GetState();
     ID3D11DeviceContext1* const deviceContext = m_DeviceResources->GetD3DDeviceContext();
     assert(deviceContext != nullptr);
-    m_BulletScene->HandleMouseEvent(deltaTime, mouseState, *deviceContext);
+    m_PhysicsScene->HandleMouseEvent(deltaTime, mouseState, *deviceContext);
 }
 #pragma endregion
 

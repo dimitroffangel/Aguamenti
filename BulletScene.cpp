@@ -9,7 +9,7 @@ void BulletScene::AddParticle(ID3D11DeviceContext1& deviceContext, const Aguamen
     Particle particle;
     particle.m_InverseMass = 32.f;
     particle.m_Velocity = Aguamenti::Vector3(0.3f, 0.f, 0.f);
-    particle.m_Acceleration = Aguamenti::Vector3(1.f, -0.05f, 0.f);
+    particle.m_Acceleration = Aguamenti::Vector3(2.f, 0, 0.f);
     particle.m_Damping = 0.99f;
     particle.m_CurrentPosition = Aguamenti::Vector3(spawnPositionX, spawnPositionY, 0.f);
 
@@ -19,6 +19,8 @@ void BulletScene::AddParticle(ID3D11DeviceContext1& deviceContext, const Aguamen
 
 void BulletScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
 {
+    ApplyGravity();
+
     for (Particle& particle : m_Particles)
     {
         particle.Integrate(deltaTime);
@@ -56,5 +58,13 @@ void BulletScene::HandleMouseEvent(const float deltaTime, const DirectX::Mouse::
     {
         AddParticle(deviceContext, -1.f, 0.f);
         m_HasFiredBullet = true;
+    }
+}
+
+void BulletScene::ApplyGravity()
+{
+    for (Particle& particle : m_Particles)
+    {
+        particle.AddForce(m_Gravity);
     }
 }

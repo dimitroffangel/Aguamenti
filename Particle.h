@@ -29,7 +29,11 @@ public:
 	Aguamenti::Real m_InverseMass;
 
 public:
+	void AddForce(const Aguamenti::Vector3 forceToAdd);
 	void Integrate(const Aguamenti::Real deltaTime);
+
+private:
+	void RemoveAllForcesApplied();
 };
 
 #endif

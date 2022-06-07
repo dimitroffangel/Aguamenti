@@ -78,6 +78,14 @@ void FireworkScene::HandleMouseEvent(const float deltaTime, const DirectX::Mouse
 	}
 }
 
+void FireworkScene::ApplyGravity()
+{
+	for (Firework& firework : m_Fireworks)
+	{
+		firework.AddForce(m_Gravity);
+	}
+}
+
 void FireworkScene::CreateFirework(const Firework& firework, ID3D11DeviceContext1& deviceContext)
 {
 	for (int i = 0; i < firework.m_NumberOfHeirs; ++i)
