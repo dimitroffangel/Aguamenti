@@ -25,6 +25,8 @@ Game::Game() noexcept(false)
     m_PhysicsScene->m_Gravity.m_X = 0;
     m_PhysicsScene->m_Gravity.m_Y = -0.002f;
     m_PhysicsScene->m_Gravity.m_Z = 0;
+    m_PhysicsScene->m_DragForceCoeficientK1 = 0.05f;
+    m_PhysicsScene->m_DragForceCoeficientK2 = 0.01f;
 }
 
 // Initialize the Direct3D resources required to run.
