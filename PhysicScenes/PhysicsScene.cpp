@@ -1,8 +1,9 @@
-#include "pch.h"
-#include "PhysicsScene.h"
+#include <pch.h>
 
-#include "GravityForce.h"
-#include "DragForce.h"
+#include <PhysicScenes/PhysicsScene.h>
+
+#include <Physics/Forces/GravityForce.h>
+#include <Physics/Forces/DragForce.h>
 
 void PhysicsScene::AddGravitationalForce(const Aguamenti::Vector3 gravity)
 {

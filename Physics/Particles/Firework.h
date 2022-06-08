@@ -1,7 +1,7 @@
 #ifndef AGUAMENTI_FIREWORK_H
 #define AGUAMENTI_FIREWORK_H
 
-#include "Particle.h"
+#include <Physics/Particles/Particle.h>
 
 namespace Aguamenti
 {

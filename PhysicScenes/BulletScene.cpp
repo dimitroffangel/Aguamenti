@@ -1,7 +1,8 @@
-#include "pch.h"
-#include "BulletScene.h"
-#include "Particle.h"
-#include "ForceHelper.h"
+#include <pch.h>
+
+#include <PhysicScenes/BulletScene.h>
+#include <Physics/Particles/Particle.h>
+#include <Physics/Forces/ForceHelper.h>
 
 #include <algorithm>
 

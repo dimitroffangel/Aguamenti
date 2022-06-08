@@ -1,5 +1,6 @@
-#include "pch.h"
-#include "Particle.h"
+#include <pch.h>
+
+#include <Physics/Particles/Particle.h>
 
 void Aguamenti::Particle::AddForce(const Aguamenti::Vector3 forceToAdd)
 {

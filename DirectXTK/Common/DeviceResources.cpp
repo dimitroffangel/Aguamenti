@@ -3,8 +3,8 @@
 //                       (requires DirectX 11.1 Runtime)
 //
 
-#include "pch.h"
-#include "DeviceResources.h"
+#include <pch.h>
+#include <DirectXTK/Common/DeviceResources.h>
 
 using namespace DirectX;
 using namespace DX;

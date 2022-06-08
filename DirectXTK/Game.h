@@ -4,9 +4,10 @@
 
 #pragma once
 
-#include "DeviceResources.h"
-#include "StepTimer.h"
-#include "PhysicsScene.h"
+#include "./DirectXTK/Common/DeviceResources.h"
+#include "./DirectXTK/Common/StepTimer.h"
+
+#include "./PhysicScenes/PhysicsScene.h"
 
 
 // A basic game implementation that creates a D3D11 device and

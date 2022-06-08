@@ -2,10 +2,12 @@
 // Game.cpp
 //
 
-#include "pch.h"
-#include "Game.h"
-#include "FireworkScene.h"
-#include "BulletScene.h"
+#include <pch.h>
+
+#include <DirectXTK/Game.h>
+
+#include <PhysicScenes/FireworkScene.h>
+#include <PhysicScenes/BulletScene.h>
 
 extern void ExitGame() noexcept;
 
@@ -21,7 +23,7 @@ Game::Game() noexcept(false)
     //   Add DX::DeviceResources::c_EnableHDR for HDR10 display.
     m_DeviceResources->RegisterDeviceNotify(this);
 
-    m_PhysicsScene = std::make_unique<BulletScene>();
+    m_PhysicsScene = std::make_unique<FireworkScene>();
     m_PhysicsScene->AddGravitationalForce(Aguamenti::Vector3(0, -0.0002f, 0));
     m_PhysicsScene->AddDragForce(0.05f, 0.01f);
 }

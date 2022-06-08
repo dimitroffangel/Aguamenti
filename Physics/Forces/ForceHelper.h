@@ -1,7 +1,7 @@
 #ifndef AGUAMENTI_FORCEHELPER_H
 #define AGUAMENTI_FORCEHELPER_H
 
-#include "Force.h"
+#include <Physics/Forces/Force.h>
 
 namespace Aguamenti
 {

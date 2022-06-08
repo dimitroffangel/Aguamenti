@@ -1,65 +1,124 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Common">
-      <UniqueIdentifier>54f8bcd0-83b2-4bf7-9bb6-c020f533b6de</UniqueIdentifier>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{442f151d-f814-4960-89bd-85cccc63dcc2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Assets">
+    <Filter Include="Physics\Forces">
+      <UniqueIdentifier>{a97e7215-21ac-42ed-bec8-ea7f16247825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Particles">
+      <UniqueIdentifier>{83e40fa8-a51b-462a-8666-235b9588d08a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PhysicScenes">
+      <UniqueIdentifier>{729cf0a6-6458-4309-9f31-aa4a879d91d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectXTK">
+      <UniqueIdentifier>{742ee6a7-2004-4d51-93e4-4f13fc4db2dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectXTK\Assets">
       <UniqueIdentifier>83fe6c8c-be7b-43b7-9541-8fdd915a89ef</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dds;dlg;fbx;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="DirectXTK\Common">
+      <UniqueIdentifier>54f8bcd0-83b2-4bf7-9bb6-c020f533b6de</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DirectXTK\Game.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXTK\Common\DeviceResources.h">
+      <Filter>DirectXTK\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXTK\Common\StepTimer.h">
+      <Filter>DirectXTK\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicScenes\BulletScene.h">
+      <Filter>PhysicScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicScenes\FireworkScene.h">
+      <Filter>PhysicScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicScenes\PhysicsScene.h">
+      <Filter>PhysicScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Core.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Precision.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Particles\Firework.h">
+      <Filter>Physics\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Particles\Particle.h">
+      <Filter>Physics\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Forces\DragForce.h">
+      <Filter>Physics\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Forces\Force.h">
+      <Filter>Physics\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Forces\ForceHelper.h">
+      <Filter>Physics\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Forces\GravityForce.h">
+      <Filter>Physics\Forces</Filter>
+    </ClInclude>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="StepTimer.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="DeviceResources.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Core.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="Precision.h" />
-    <ClInclude Include="BulletScene.h" />
-    <ClInclude Include="Firework.h" />
-    <ClInclude Include="FireworkScene.h" />
-    <ClInclude Include="PhysicsScene.h" />
-    <ClInclude Include="Force.h" />
-    <ClInclude Include="GravityForce.h" />
-    <ClInclude Include="DragForce.h" />
-    <ClInclude Include="ForceHelper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="DeviceResources.cpp">
-      <Filter>Common</Filter>
+    <ClCompile Include="DirectXTK\Game.cpp">
+      <Filter>DirectXTK</Filter>
     </ClCompile>
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="BulletScene.cpp" />
-    <ClCompile Include="Firework.cpp" />
-    <ClCompile Include="FireworkScene.cpp" />
-    <ClCompile Include="Precision.cpp" />
-    <ClCompile Include="GravityForce.cpp" />
-    <ClCompile Include="DragForce.cpp" />
-    <ClCompile Include="PhysicsScene.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="resource.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="directx.ico">
-      <Filter>Assets</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Manifest Include="settings.manifest">
-      <Filter>Assets</Filter>
-    </Manifest>
+    <ClCompile Include="DirectXTK\Common\DeviceResources.cpp">
+      <Filter>DirectXTK\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicScenes\BulletScene.cpp">
+      <Filter>PhysicScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicScenes\FireworkScene.cpp">
+      <Filter>PhysicScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicScenes\PhysicsScene.cpp">
+      <Filter>PhysicScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Precision.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Particles\Firework.cpp">
+      <Filter>Physics\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Particles\Particle.cpp">
+      <Filter>Physics\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Forces\DragForce.cpp">
+      <Filter>Physics\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Forces\GravityForce.cpp">
+      <Filter>Physics\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DirectXTK\resource.rc">
+      <Filter>DirectXTK</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="DirectXTK\Assets\directx.ico">
+      <Filter>DirectXTK\Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="DirectXTK\Assets\settings.manifest">
+      <Filter>DirectXTK\Assets</Filter>
+    </Manifest>
   </ItemGroup>
 </Project>

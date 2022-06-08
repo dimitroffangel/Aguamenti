@@ -1,11 +1,11 @@
 #ifndef AGUAMENTI_PHYSICSSCENE_H
 #define AGUAMENTI_PHYSICSSCENE_H
 
-#include "Precision.h"
-#include "Core.h"
-#include "Force.h"
+#include <pch.h>
 
-#include "pch.h"
+#include <Physics/Precision.h>
+#include <Physics/Core.h>
+#include <Physics/Forces/Force.h>
 
 #include <vector>
 

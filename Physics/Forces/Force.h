@@ -1,7 +1,7 @@
 #ifndef AGUAMENTI_FORCE_H
 #define AGUAMENTI_FORCE_H
 
-#include "Particle.h"
+#include <Physics/Particles/Particle.h>
 
 namespace Aguamenti
 {

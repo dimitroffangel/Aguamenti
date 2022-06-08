@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-#include "./Precision.h"
+#include <Physics/Precision.h>
 
 namespace Aguamenti
 {

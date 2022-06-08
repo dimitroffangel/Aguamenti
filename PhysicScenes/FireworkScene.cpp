@@ -1,6 +1,7 @@
-#include "pch.h"
-#include "FireworkScene.h"
-#include "ForceHelper.h"
+#include <pch.h>
+
+#include <PhysicScenes/FireworkScene.h>
+#include <Physics/Forces/ForceHelper.h>
 
 #include <algorithm>
 

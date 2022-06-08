@@ -1,8 +1,8 @@
 #ifndef AGUAMENTI_DRAGFORCE_H
 #define AGUAMENTI_DRAGFORCE_H
 
-#include "Force.h"
-#include "Core.h"
+#include <Physics/Forces/Force.h>
+#include <Physics/Core.h>
 
 namespace Aguamenti
 {

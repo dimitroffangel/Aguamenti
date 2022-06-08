@@ -1,8 +1,8 @@
 #ifndef AGUAMENTI_BULLETSCENE_H
 #define AGUAMENTI_BULLETSCENE_H
 
-#include "Particle.h"
-#include "PhysicsScene.h"
+#include <Physics/Particles/Particle.h>
+#include <PhysicScenes/PhysicsScene.h>
 
 class BulletScene : public PhysicsScene
 {

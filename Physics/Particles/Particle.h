@@ -1,8 +1,8 @@
 #ifndef AGUAMENTI_PARTICLE_H
 #define AGUAMENTI_PARTICLE_H
 
-#include "Core.h"
-#include "Precision.h"
+#include <Physics/Core.h>
+#include <Physics/Precision.h>
 
 namespace Aguamenti
 {

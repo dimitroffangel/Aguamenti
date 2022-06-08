@@ -1,8 +1,8 @@
 #ifndef AGUAMENTI_FIREWORKSCENE_H
 #define AGUAMENTI_FIREWORKSCENE_H
 
-#include "PhysicsScene.h"
-#include "Firework.h"
+#include <PhysicScenes/PhysicsScene.h>
+#include <Physics/Particles/Firework.h>
 
 class FireworkScene : public PhysicsScene
 {
