@@ -25,6 +25,10 @@
     <ClInclude Include="Firework.h" />
     <ClInclude Include="FireworkScene.h" />
     <ClInclude Include="PhysicsScene.h" />
+    <ClInclude Include="Force.h" />
+    <ClInclude Include="GravityForce.h" />
+    <ClInclude Include="DragForce.h" />
+    <ClInclude Include="ForceHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -38,6 +42,10 @@
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="FireworkScene.cpp" />
     <ClCompile Include="Precision.cpp" />
+    <ClCompile Include="GravityForce.cpp" />
+    <ClCompile Include="DragForce.cpp" />
+    <ClCompile Include="ForceHelper.cpp" />
+    <ClCompile Include="PhysicsScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

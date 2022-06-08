@@ -182,9 +182,13 @@
     <ClInclude Include="BulletScene.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="DeviceResources.h" />
+    <ClInclude Include="DragForce.h" />
     <ClInclude Include="Firework.h" />
     <ClInclude Include="FireworkScene.h" />
+    <ClInclude Include="Force.h" />
+    <ClInclude Include="ForceHelper.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GravityForce.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PhysicsScene.h" />
@@ -194,9 +198,12 @@
   <ItemGroup>
     <ClCompile Include="BulletScene.cpp" />
     <ClCompile Include="DeviceResources.cpp" />
+    <ClCompile Include="DragForce.cpp" />
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="FireworkScene.cpp" />
+    <ClCompile Include="ForceHelper.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GravityForce.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="pch.cpp">
@@ -205,6 +212,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PhysicsScene.cpp" />
     <ClCompile Include="Precision.cpp" />
   </ItemGroup>
   <ItemGroup>

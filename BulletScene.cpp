@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BulletScene.h"
 #include "Particle.h"
+#include "ForceHelper.h"
 
 #include <algorithm>
 
@@ -19,8 +20,7 @@ void BulletScene::AddParticle(ID3D11DeviceContext1& deviceContext, const Aguamen
 
 void BulletScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
 {
-    ApplyGravity();
-    ApplyDragForce();
+    Aguamenti::ApplyForce(m_Forces, m_Particles);
 
     for (Particle& particle : m_Particles)
     {
@@ -59,26 +59,5 @@ void BulletScene::HandleMouseEvent(const float deltaTime, const DirectX::Mouse::
     {
         AddParticle(deviceContext, -1.f, 0.f);
         m_HasFiredBullet = true;
-    }
-}
-
-void BulletScene::ApplyGravity()
-{
-    for (Particle& particle : m_Particles)
-    {
-        particle.AddForce(m_Gravity);
-    }
-}
-
-void BulletScene::ApplyDragForce()
-{
-    for (Particle& particle : m_Particles)
-    {
-        Aguamenti::Vector3 dragForce = particle.m_Velocity;
-        const Aguamenti::Real velocityParticle = particle.m_Velocity.GetMagnitude();
-        const Aguamenti::Real dragCoefficient = (velocityParticle * m_DragForceCoeficientK1) + velocityParticle * velocityParticle * m_DragForceCoeficientK2;
-        dragForce.GetNormalize();
-        dragForce *= -dragCoefficient;
-        particle.AddForce(dragForce);
     }
 }

@@ -21,12 +21,9 @@ Game::Game() noexcept(false)
     //   Add DX::DeviceResources::c_EnableHDR for HDR10 display.
     m_DeviceResources->RegisterDeviceNotify(this);
 
-    m_PhysicsScene = std::make_unique<FireworkScene>();
-    m_PhysicsScene->m_Gravity.m_X = 0;
-    m_PhysicsScene->m_Gravity.m_Y = -0.002f;
-    m_PhysicsScene->m_Gravity.m_Z = 0;
-    m_PhysicsScene->m_DragForceCoeficientK1 = 0.05f;
-    m_PhysicsScene->m_DragForceCoeficientK2 = 0.01f;
+    m_PhysicsScene = std::make_unique<BulletScene>();
+    m_PhysicsScene->AddGravitationalForce(Aguamenti::Vector3(0, -0.0002f, 0));
+    m_PhysicsScene->AddDragForce(0.05f, 0.01f);
 }
 
 // Initialize the Direct3D resources required to run.

@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "FireworkScene.h"
+#include "ForceHelper.h"
 
 #include <algorithm>
 
 void FireworkScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
 {
-	ApplyGravity();
-	ApplyDragForce();
+	Aguamenti::ApplyForce(m_Forces, m_Fireworks);
 
 	const size_t currentNumberOfFireworksBeforeUpdate = m_Fireworks.size();
 	for (size_t i = 0; i < currentNumberOfFireworksBeforeUpdate; ++i)
@@ -78,27 +78,6 @@ void FireworkScene::HandleMouseEvent(const float deltaTime, const DirectX::Mouse
 			m_FireworkMeshes.push_back(std::move(DirectX::GeometricPrimitive::CreateSphere(&deviceContext, 0.05f)));
 		}
 		m_HasSpawnedFireworks = true;
-	}
-}
-
-void FireworkScene::ApplyGravity()
-{
-	for (Firework& firework : m_Fireworks)
-	{
-		firework.AddForce(m_Gravity);
-	}
-}
-
-void FireworkScene::ApplyDragForce()
-{
-	for (Firework& firework : m_Fireworks)
-	{
-		Aguamenti::Vector3 dragForce = firework.m_Velocity;
-		const Aguamenti::Real velocityParticle = firework.m_Velocity.GetMagnitude();
-		const Aguamenti::Real dragCoefficient = (velocityParticle * m_DragForceCoeficientK1) + velocityParticle * velocityParticle * m_DragForceCoeficientK2;
-		dragForce.GetNormalize();
-		dragForce *= -dragCoefficient;
-		firework.AddForce(dragForce);
 	}
 }
 
