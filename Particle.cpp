@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Particle.h"
 
-void Particle::AddForce(const Aguamenti::Vector3 forceToAdd)
+void Aguamenti::Particle::AddForce(const Aguamenti::Vector3 forceToAdd)
 {
 	m_AccumulatedForce += forceToAdd;
 }
 
-void Particle::Integrate(const Aguamenti::Real deltaTime)
+void Aguamenti::Particle::Integrate(const Aguamenti::Real deltaTime)
 {
 	// 0.5*a*t^2 -> may cause cause floating problems
 	m_CurrentPosition.AddScaledVector(m_Velocity, deltaTime);
@@ -19,7 +19,7 @@ void Particle::Integrate(const Aguamenti::Real deltaTime)
 	RemoveAllForcesApplied();
 }
 
-void Particle::RemoveAllForcesApplied()
+void Aguamenti::Particle::RemoveAllForcesApplied()
 {
 	m_AccumulatedForce = Aguamenti::Vector3(0, 0, 0);
 }

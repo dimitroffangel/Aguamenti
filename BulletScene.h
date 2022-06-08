@@ -19,7 +19,7 @@ private:
 private:
 	Aguamenti::Real m_TimerBeforeAnotherBullet = 0.0f;
 	bool m_HasFiredBullet = false;
-	std::vector<Particle> m_Particles;
+	std::vector<Aguamenti::Particle> m_Particles;
 	std::vector< std::unique_ptr<DirectX::GeometricPrimitive>> m_ParticlesMeshes;
 };
 

@@ -44,7 +44,6 @@
     <ClCompile Include="Precision.cpp" />
     <ClCompile Include="GravityForce.cpp" />
     <ClCompile Include="DragForce.cpp" />
-    <ClCompile Include="ForceHelper.cpp" />
     <ClCompile Include="PhysicsScene.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -4,36 +4,40 @@
 #include "Core.h"
 #include "Precision.h"
 
-class Particle
+namespace Aguamenti
 {
-public:
-	Particle()
+	class Particle
 	{
+	public:
+		Particle()
+		{
 
-	}
+		}
 
-	Particle(const Aguamenti::Vector3& initialPosition, const Aguamenti::Vector3& velocity, const Aguamenti::Vector3& acceleration, const Aguamenti::Real damping, const Aguamenti::Real inverseMass)
-		: m_CurrentPosition(initialPosition), m_Velocity(velocity), m_Acceleration(acceleration), m_Damping(damping), m_InverseMass(inverseMass)
+		Particle(const Vector3& initialPosition, const Vector3& velocity, const Vector3& acceleration, const Real damping, const Real inverseMass)
+			: m_CurrentPosition(initialPosition), m_Velocity(velocity), m_Acceleration(acceleration), m_Damping(damping), m_InverseMass(inverseMass)
 
-	{
+		{
 
-	}
+		}
 
-public:
-	Aguamenti::Vector3 m_CurrentPosition;
-	Aguamenti::Vector3 m_Velocity;
-	Aguamenti::Vector3 m_Acceleration;
-	Aguamenti::Vector3 m_AccumulatedForce;
+	public:
+		Vector3 m_CurrentPosition;
+		Vector3 m_Velocity;
+		Vector3 m_Acceleration;
+		Vector3 m_AccumulatedForce;
 
-	Aguamenti::Real m_Damping;
-	Aguamenti::Real m_InverseMass;
+		Real m_Damping;
+		Real m_InverseMass;
 
-public:
-	void AddForce(const Aguamenti::Vector3 forceToAdd);
-	void Integrate(const Aguamenti::Real deltaTime);
+	public:
+		void AddForce(const Vector3 forceToAdd);
+		void Integrate(const Real deltaTime);
 
-private:
-	void RemoveAllForcesApplied();
-};
+	private:
+		void RemoveAllForcesApplied();
+	};
+}
+
 
 #endif

@@ -11,7 +11,7 @@ void FireworkScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11
 	const size_t currentNumberOfFireworksBeforeUpdate = m_Fireworks.size();
 	for (size_t i = 0; i < currentNumberOfFireworksBeforeUpdate; ++i)
 	{
-		Firework& firework = m_Fireworks[i];
+		Aguamenti::Firework& firework = m_Fireworks[i];
 		firework.Integrate(deltaTime);
 		firework.Update(deltaTime);
 
@@ -27,7 +27,7 @@ void FireworkScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11
 	}
 
 	m_Fireworks.erase(std::remove_if(m_Fireworks.begin(), m_Fireworks.end(), 
-		[](const Firework& firework) {
+		[](const Aguamenti::Firework& firework) {
 				return firework.m_Age <= 0.f;
 		}), 
 		m_Fireworks.end());
@@ -64,7 +64,7 @@ void FireworkScene::HandleMouseEvent(const float deltaTime, const DirectX::Mouse
 	{
 		for (size_t i = 0; i < 10; ++i)
 		{
-			Firework particle;
+			Aguamenti::Firework particle;
 			particle.m_InverseMass = 32.f;
 			
 			particle.m_Velocity = Aguamenti::Vector3(Aguamenti::GetRandomRealNumber(-0.1, 0.1), Aguamenti::GetRandomRealNumber(-0.1, 0.1), 0.f);
@@ -81,11 +81,11 @@ void FireworkScene::HandleMouseEvent(const float deltaTime, const DirectX::Mouse
 	}
 }
 
-void FireworkScene::CreateFirework(const Firework& firework, ID3D11DeviceContext1& deviceContext)
+void FireworkScene::CreateFirework(const Aguamenti::Firework& firework, ID3D11DeviceContext1& deviceContext)
 {
 	for (int i = 0; i < firework.m_NumberOfHeirs; ++i)
 	{
-		Firework childFirework = firework;
+		Aguamenti::Firework childFirework = firework;
 		childFirework.m_Age = Aguamenti::GetRandomRealNumber(0.1f, 3.f);
 		childFirework.m_NumberOfHeirs = Aguamenti::GetRandomIntegerNumber(0, 5);
 		childFirework.m_Velocity = Aguamenti::Vector3(Aguamenti::GetRandomRealNumber(-0.1, 0.1), Aguamenti::GetRandomRealNumber(-0.1, 0.1), 0.f);

@@ -201,7 +201,6 @@
     <ClCompile Include="DragForce.cpp" />
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="FireworkScene.cpp" />
-    <ClCompile Include="ForceHelper.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GravityForce.cpp" />
     <ClCompile Include="Main.cpp" />

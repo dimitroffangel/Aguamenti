@@ -7,7 +7,7 @@
 
 void BulletScene::AddParticle(ID3D11DeviceContext1& deviceContext, const Aguamenti::Real spawnPositionX, const Aguamenti::Real spawnPositionY)
 {
-    Particle particle;
+    Aguamenti::Particle particle;
     particle.m_InverseMass = 32.f;
     particle.m_Velocity = Aguamenti::Vector3(0.3f, 0.f, 0.f);
     particle.m_Acceleration = Aguamenti::Vector3(2.f, 0, 0.f);
@@ -22,7 +22,7 @@ void BulletScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11De
 {
     Aguamenti::ApplyForce(m_Forces, m_Particles);
 
-    for (Particle& particle : m_Particles)
+    for (Aguamenti::Particle& particle : m_Particles)
     {
         particle.Integrate(deltaTime);
     }

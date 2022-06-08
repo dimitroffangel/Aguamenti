@@ -3,10 +3,13 @@
 
 #include "Particle.h"
 
-class Force
+namespace Aguamenti
 {
-public:
-	virtual void ApplyForce(Particle& particle) = 0;
-};
+	class Force
+	{
+	public:
+		virtual void ApplyForce(Particle& particle) = 0;
+	};
+}
 
 #endif

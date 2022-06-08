@@ -3,18 +3,21 @@
 
 #include "Particle.h"
 
-class Firework : public Particle
+namespace Aguamenti
 {
-public:
-	void Update(const Aguamenti::Real deltaTime)
+	class Firework : public Particle
 	{
-		m_Age -= deltaTime;
-	}
+	public:
+		void Update(const Real deltaTime)
+		{
+			m_Age -= deltaTime;
+		}
 
-public:
-	Aguamenti::Real m_Age;
-	int m_NumberOfHeirs;
-};
+	public:
+		Real m_Age;
+		int m_NumberOfHeirs;
+	};
+}
 
 #endif
 

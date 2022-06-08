@@ -22,7 +22,7 @@ public:
 	void AddDragForce(const Aguamenti::Real k1, const Aguamenti::Real k2);
 
 protected:
-	std::vector<std::unique_ptr<Force>> m_Forces;
+	std::vector<std::unique_ptr<Aguamenti::Force>> m_Forces;
 };
 
 #endif
