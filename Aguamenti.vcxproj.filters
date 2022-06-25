@@ -102,6 +102,7 @@
       <Filter>Physics\Forces</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Physics\Forces\ForceHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

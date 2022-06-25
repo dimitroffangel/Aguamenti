@@ -6,13 +6,13 @@
 namespace Aguamenti
 {
 	template<typename PhysicsObject>
-	void ApplyForce(const std::vector<std::unique_ptr<Force>>& forcesToApply, std::vector<PhysicsObject>& physicsObjects)
+	void ApplyForce(const std::vector<std::unique_ptr<Force>>& forcesToApply, std::vector<std::shared_ptr<PhysicsObject>>& physicsObjects)
 	{
-		for (PhysicsObject physicsObject : physicsObjects)
+		for (const std::shared_ptr<PhysicsObject>&physicsObject : physicsObjects)
 		{
 			for (const auto& force : forcesToApply)
 			{
-				force->ApplyForce(physicsObject);
+				force->ApplyForce(*physicsObject);
 			}
 		}
 	}

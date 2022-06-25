@@ -23,6 +23,7 @@ public:
 
 protected:
 	std::vector<std::unique_ptr<Aguamenti::Force>> m_Forces;
+	std::vector<std::unique_ptr<Aguamenti::Force>> m_ParticleForces;
 };
 
 #endif

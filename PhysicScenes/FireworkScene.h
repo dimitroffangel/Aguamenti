@@ -19,7 +19,7 @@ private:
 private:
 	Aguamenti::Real m_TimerBeforeAnotherFireworkSet = 0.0f;
 	bool m_HasSpawnedFireworks = false;
-	std::vector<Aguamenti::Firework> m_Fireworks;
+	std::vector<std::shared_ptr<Aguamenti::Firework>> m_Fireworks;
 	std::vector< std::unique_ptr<DirectX::GeometricPrimitive>> m_FireworkMeshes;
 };
 

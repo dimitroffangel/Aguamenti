@@ -207,6 +207,7 @@
     <ClCompile Include="PhysicScenes\FireworkScene.cpp" />
     <ClCompile Include="PhysicScenes\PhysicsScene.cpp" />
     <ClCompile Include="Physics\Forces\DragForce.cpp" />
+    <ClCompile Include="Physics\Forces\ForceHelper.cpp" />
     <ClCompile Include="Physics\Forces\GravityForce.cpp" />
     <ClCompile Include="Physics\Particles\Firework.cpp" />
     <ClCompile Include="Physics\Particles\Particle.cpp" />
