@@ -2,7 +2,8 @@
 #define AGUAMENTI_FIREWORKSCENE_H
 
 #include <PhysicScenes/PhysicsScene.h>
-#include <Physics/Particles/Firework.h>
+#include <Physics/Components/Particles/FireworkComponent.h>
+#include <Physics/Entity/PhysicsEntity.h>
 
 class FireworkScene : public PhysicsScene
 {
@@ -14,13 +15,12 @@ public:
 	virtual void HandleMouseEvent(const float deltaTime, const DirectX::Mouse::State mouseState, ID3D11DeviceContext1& deviceContext) override;
 	
 private:
-	void CreateFirework(const Aguamenti::Firework& firework, ID3D11DeviceContext1& deviceContext);
+	void CreateFirework(const Aguamenti::PhysicsEntity& physicsEntity,  ID3D11DeviceContext1& deviceContext);
 
 private:
 	Aguamenti::Real m_TimerBeforeAnotherFireworkSet = 0.0f;
 	bool m_HasSpawnedFireworks = false;
-	std::vector<std::shared_ptr<Aguamenti::Firework>> m_Fireworks;
-	std::vector< std::unique_ptr<DirectX::GeometricPrimitive>> m_FireworkMeshes;
+	std::vector<std::shared_ptr<Aguamenti::PhysicsEntity>> m_Fireworks;
 };
 
 #endif

@@ -1,44 +1,54 @@
 #include <pch.h>
 
 #include <PhysicScenes/BulletScene.h>
-#include <Physics/Particles/Particle.h>
+#include <Physics/Components/Particles/Particle.h>
+#include <DirectXTK/Components/MeshComponent.h>
 #include <Physics/Forces/ForceHelper.h>
+#include <Physics/Systems/Entity/PhysicsEntityHelper.h>
 
 #include <algorithm>
 
 void BulletScene::AddParticle(ID3D11DeviceContext1& deviceContext, const Aguamenti::Real spawnPositionX, const Aguamenti::Real spawnPositionY)
 {
-    std::shared_ptr<Aguamenti::Particle> particle = std::make_shared<Aguamenti::Particle>();
-    particle->m_InverseMass = 32.f;
-    particle->m_Velocity = Aguamenti::Vector3(0.3f, 0.f, 0.f);
-    particle->m_Acceleration = Aguamenti::Vector3(2.f, 0, 0.f);
-    particle->m_Damping = 0.99f;
-    particle->m_CurrentPosition = Aguamenti::Vector3(spawnPositionX, spawnPositionY, 0.f);
+    std::shared_ptr<Aguamenti::PhysicsEntity> physicsEntity = std::make_shared<Aguamenti::PhysicsEntity>();
+    Aguamenti::AddComponent<Aguamenti::ParticleComponent>(*physicsEntity);
+    Aguamenti::ParticleComponent* particleComponent = GetComponent<Aguamenti::ParticleComponent>(*physicsEntity);
+    assert(particleComponent != nullptr);
+    particleComponent->m_InverseMass = 32.f;
+    particleComponent->m_Velocity = Aguamenti::Vector3(0.3f, 0.f, 0.f);
+    particleComponent->m_Acceleration = Aguamenti::Vector3(2.f, 0, 0.f);
+    particleComponent->m_Damping = 0.99f;
+    particleComponent->m_CurrentPosition = Aguamenti::Vector3(spawnPositionX, spawnPositionY, 0.f);
 
-    m_Particles.push_back(particle);
-    m_ParticlesMeshes.push_back(std::move(DirectX::GeometricPrimitive::CreateSphere(&deviceContext, 0.1f)));
+    Aguamenti::AddComponent<Aguamenti::MeshComponent>(*physicsEntity);
+    Aguamenti::MeshComponent* meshComponent = GetComponent<Aguamenti::MeshComponent>(*physicsEntity);
+    meshComponent->m_DXTK_GeometrixPrimitive = std::move(DirectX::GeometricPrimitive::CreateSphere(&deviceContext, 0.1f));
+
+    m_Particles.push_back(physicsEntity);
 }
 
 void BulletScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
 {
     Aguamenti::ApplyForce(m_Forces, m_Particles);
 
-    for (const std::shared_ptr<Aguamenti::Particle>& particle : m_Particles)
+    for (const std::shared_ptr<Aguamenti::PhysicsEntity>& physicsEntity : m_Particles)
     {
-        particle->Integrate(deltaTime);
+        Aguamenti::ParticleComponent* particleComponent = GetComponent<Aguamenti::ParticleComponent>(*physicsEntity);
+        assert(particleComponent != nullptr);
+        particleComponent->Update(deltaTime);
     }
 }
 
 void BulletScene::DrawPhysicsObjects(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection)
 {
-    assert(m_Particles.size() == m_ParticlesMeshes.size());
-
-    for (size_t i = 0; i < m_ParticlesMeshes.size(); ++i)
+    for (const auto& physicsObject : m_Particles)
     {
-        const auto& particleMesh = m_ParticlesMeshes[i];
+        Aguamenti::ParticleComponent* particleComponent = Aguamenti::GetComponent<Aguamenti::ParticleComponent>(*physicsObject);
+        assert(particleComponent != nullptr);
+        const auto& particleMesh = Aguamenti::GetComponent<Aguamenti::MeshComponent>(*physicsObject);
         const DirectX::SimpleMath::Matrix particleMeshPosition = DirectX::SimpleMath::Matrix::CreateTranslation(
-            DirectX::SimpleMath::Vector3(m_Particles[i]->m_CurrentPosition.m_X, m_Particles[i]->m_CurrentPosition.m_Y, m_Particles[i]->m_CurrentPosition.m_Z));
-        particleMesh->Draw(particleMeshPosition, matrixView, matrixProjection);
+            DirectX::SimpleMath::Vector3(particleComponent->m_CurrentPosition.m_X, particleComponent->m_CurrentPosition.m_Y, particleComponent->m_CurrentPosition.m_Z));
+        particleMesh->m_DXTK_GeometrixPrimitive->Draw(particleMeshPosition, matrixView, matrixProjection);
     }
 }
 

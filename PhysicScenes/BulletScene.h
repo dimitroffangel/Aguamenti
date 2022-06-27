@@ -1,8 +1,9 @@
 #ifndef AGUAMENTI_BULLETSCENE_H
 #define AGUAMENTI_BULLETSCENE_H
 
-#include <Physics/Particles/Particle.h>
+#include <Physics/Components/Particles/Particle.h>
 #include <PhysicScenes/PhysicsScene.h>
+#include <Physics/Entity/PhysicsEntity.h>
 
 class BulletScene : public PhysicsScene
 {
@@ -19,8 +20,7 @@ private:
 private:
 	Aguamenti::Real m_TimerBeforeAnotherBullet = 0.0f;
 	bool m_HasFiredBullet = false;
-	std::vector<std::shared_ptr<Aguamenti::Particle>> m_Particles;
-	std::vector< std::unique_ptr<DirectX::GeometricPrimitive>> m_ParticlesMeshes;
+	std::vector<std::shared_ptr<Aguamenti::PhysicsEntity>> m_Particles;
 };
 
 #endif

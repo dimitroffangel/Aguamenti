@@ -16,7 +16,7 @@ namespace Aguamenti
 		}
 
 	public:
-		virtual void ApplyForce(Particle& particle) override;
+		virtual void ApplyForce(ParticleComponent& particle) override;
 
 	private:
 		Real m_DragForceCoeficientK1;

@@ -7,9 +7,6 @@
     <Filter Include="Physics\Forces">
       <UniqueIdentifier>{a97e7215-21ac-42ed-bec8-ea7f16247825}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Physics\Particles">
-      <UniqueIdentifier>{83e40fa8-a51b-462a-8666-235b9588d08a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PhysicScenes">
       <UniqueIdentifier>{729cf0a6-6458-4309-9f31-aa4a879d91d7}</UniqueIdentifier>
     </Filter>
@@ -22,6 +19,21 @@
     </Filter>
     <Filter Include="DirectXTK\Common">
       <UniqueIdentifier>54f8bcd0-83b2-4bf7-9bb6-c020f533b6de</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Components">
+      <UniqueIdentifier>{7d729636-637a-4085-81f8-f966ff2183c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Components\Particles">
+      <UniqueIdentifier>{83e40fa8-a51b-462a-8666-235b9588d08a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Systems">
+      <UniqueIdentifier>{8cc54083-a8ee-4103-b26d-280041b90cd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Systems\Entity">
+      <UniqueIdentifier>{2406c2dc-181f-470f-a195-b30da59b7d29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Entity">
+      <UniqueIdentifier>{fe12f256-69aa-44e3-b3b9-a686f31d0ec6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -49,12 +61,6 @@
     <ClInclude Include="Physics\Precision.h">
       <Filter>Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Physics\Particles\Firework.h">
-      <Filter>Physics\Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics\Particles\Particle.h">
-      <Filter>Physics\Particles</Filter>
-    </ClInclude>
     <ClInclude Include="Physics\Forces\DragForce.h">
       <Filter>Physics\Forces</Filter>
     </ClInclude>
@@ -68,6 +74,22 @@
       <Filter>Physics\Forces</Filter>
     </ClInclude>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="DirectXTK\Components\MeshComponent.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Components\Particles\Particle.h">
+      <Filter>Physics\Components\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Systems\Entity\PhysicsEntityHelper.h">
+      <Filter>Physics\Systems\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Entity\PhysicsEntity.h">
+      <Filter>Physics\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Components\Particles\FireworkComponent.h">
+      <Filter>Physics\Components\Particles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -89,12 +111,6 @@
     <ClCompile Include="Physics\Precision.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
-    <ClCompile Include="Physics\Particles\Firework.cpp">
-      <Filter>Physics\Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics\Particles\Particle.cpp">
-      <Filter>Physics\Particles</Filter>
-    </ClCompile>
     <ClCompile Include="Physics\Forces\DragForce.cpp">
       <Filter>Physics\Forces</Filter>
     </ClCompile>
@@ -102,7 +118,25 @@
       <Filter>Physics\Forces</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Physics\Forces\ForceHelper.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Physics\Forces\ForceHelper.cpp">
+      <Filter>Physics\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXTK\Components\MeshComponent.cpp">
+      <Filter>DirectXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Components\Particles\Particle.cpp">
+      <Filter>Physics\Components\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Systems\Entity\PhysicsEntityHelper.cpp">
+      <Filter>Physics\Systems\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Entity\PhysicsEntity.cpp">
+      <Filter>Physics\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Components\Particles\FireworkComponent.cpp">
+      <Filter>Physics\Components\Particles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

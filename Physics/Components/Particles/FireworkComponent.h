@@ -1,11 +1,11 @@
 #ifndef AGUAMENTI_FIREWORK_H
 #define AGUAMENTI_FIREWORK_H
 
-#include <Physics/Particles/Particle.h>
+#include <Component.h>
 
 namespace Aguamenti
 {
-	class Firework : public Particle
+	class FireworkComponent : public Component
 	{
 	public:
 		void Update(const Real deltaTime)

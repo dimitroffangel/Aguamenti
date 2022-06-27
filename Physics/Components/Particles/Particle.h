@@ -3,18 +3,19 @@
 
 #include <Physics/Core.h>
 #include <Physics/Precision.h>
+#include <Component.h>
 
 namespace Aguamenti
 {
-	class Particle
+	class ParticleComponent : public Component
 	{
 	public:
-		Particle()
+		ParticleComponent()
 		{
 
 		}
 
-		Particle(const Vector3& initialPosition, const Vector3& velocity, const Vector3& acceleration, const Real damping, const Real inverseMass)
+		ParticleComponent(const Vector3& initialPosition, const Vector3& velocity, const Vector3& acceleration, const Real damping, const Real inverseMass)
 			: m_CurrentPosition(initialPosition), m_Velocity(velocity), m_Acceleration(acceleration), m_Damping(damping), m_InverseMass(inverseMass)
 
 		{
@@ -36,6 +37,10 @@ namespace Aguamenti
 
 	private:
 		void RemoveAllForcesApplied();
+
+		// Inherited via Component
+	public:
+		virtual void Update(const Real deltaTime) override;
 	};
 }
 
