@@ -3,6 +3,7 @@
 
 #include <Physics/Forces/Force.h>
 #include <Physics/Systems/Entity/PhysicsEntityHelper.h>
+#include <Physics/Components/RelativeForceComponent.h>
 
 namespace Aguamenti
 {
@@ -17,6 +18,8 @@ namespace Aguamenti
 			}
 		}
 	}
+
+	void AddRelativeGravitationalForce(RelativeForceComponent& relativeComponent);
 };
 
 #endif

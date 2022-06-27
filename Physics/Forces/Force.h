@@ -17,6 +17,7 @@ namespace Aguamenti
 			ApplyForce_Internal(*particleComponent);
 		}
 
+	private:
 		virtual void ApplyForce_Internal(ParticleComponent& particle) = 0;
 	};
 }

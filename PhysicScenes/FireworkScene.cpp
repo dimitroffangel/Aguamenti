@@ -1,8 +1,12 @@
 #include <pch.h>
 
 #include <PhysicScenes/FireworkScene.h>
+
 #include <Physics/Forces/ForceHelper.h>
 #include <Physics/Systems/Entity/PhysicsEntityHelper.h>
+
+#include <Physics/Components/RelativeForceComponent.h>
+
 #include <DirectXTK/Components/MeshComponent.h>
 
 #include <algorithm>
@@ -22,6 +26,12 @@ void FireworkScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11
 		Aguamenti::FireworkComponent* fireworkComponent = Aguamenti::GetComponent<Aguamenti::FireworkComponent>(*firework);
 		assert(fireworkComponent != nullptr);
 		fireworkComponent->Update(deltaTime);
+
+		if (Aguamenti::RelativeForceComponent* relativeForceComponent = Aguamenti::GetComponent<Aguamenti::RelativeForceComponent>(*firework))
+		{
+			relativeForceComponent->ApplyForces(*firework);
+		}
+
 		if (fireworkComponent->m_Age <= 0)
 		{
 			if (m_Fireworks.size() < MAXIMUM_NUMBER_OF_FIREWORKS)
@@ -131,6 +141,11 @@ void FireworkScene::CreateFirework(const Aguamenti::PhysicsEntity& physicsEntity
 		assert(childMeshComponent != nullptr);
 		childMeshComponent->m_DXTK_GeometrixPrimitive = std::move(DirectX::GeometricPrimitive::CreateSphere(&deviceContext, 0.05f));
 		
+		Aguamenti::AddComponent<Aguamenti::RelativeForceComponent>(*childPhysicsEntity);
+		Aguamenti::RelativeForceComponent* childRelativeForceComponent = Aguamenti::GetComponent<Aguamenti::RelativeForceComponent>(*childPhysicsEntity);
+		assert(childRelativeForceComponent != nullptr);
+		Aguamenti::AddRelativeGravitationalForce(*childRelativeForceComponent);
+
 		m_Fireworks.push_back(childPhysicsEntity);
 	}
 }

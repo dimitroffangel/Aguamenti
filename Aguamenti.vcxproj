@@ -191,6 +191,7 @@
     <ClInclude Include="PhysicScenes\PhysicsScene.h" />
     <ClInclude Include="Physics\Components\Particles\FireworkComponent.h" />
     <ClInclude Include="Physics\Components\Particles\Particle.h" />
+    <ClInclude Include="Physics\Components\RelativeForceComponent.h" />
     <ClInclude Include="Physics\Core.h" />
     <ClInclude Include="Physics\Entity\PhysicsEntity.h" />
     <ClInclude Include="Physics\Forces\DragForce.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="PhysicScenes\PhysicsScene.cpp" />
     <ClCompile Include="Physics\Components\Particles\FireworkComponent.cpp" />
     <ClCompile Include="Physics\Components\Particles\Particle.cpp" />
+    <ClCompile Include="Physics\Components\RelativeForceComponent.cpp" />
     <ClCompile Include="Physics\Entity\PhysicsEntity.cpp" />
     <ClCompile Include="Physics\Forces\DragForce.cpp" />
     <ClCompile Include="Physics\Forces\ForceHelper.cpp" />

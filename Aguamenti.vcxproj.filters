@@ -90,6 +90,9 @@
     <ClInclude Include="Physics\Components\Particles\FireworkComponent.h">
       <Filter>Physics\Components\Particles</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\Components\RelativeForceComponent.h">
+      <Filter>Physics\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="Physics\Components\Particles\FireworkComponent.cpp">
       <Filter>Physics\Components\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Components\RelativeForceComponent.cpp">
+      <Filter>Physics\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
