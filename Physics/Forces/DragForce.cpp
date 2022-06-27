@@ -2,7 +2,7 @@
 
 #include <Physics/Forces/DragForce.h>
 
-void Aguamenti::DragForce::ApplyForce(ParticleComponent& particle)
+void Aguamenti::DragForce::ApplyForce_Internal(ParticleComponent& particle)
 {
 	Aguamenti::Vector3 dragForce = particle.m_Velocity;
 	const Aguamenti::Real velocityParticle = particle.m_Velocity.GetMagnitude();

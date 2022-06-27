@@ -11,12 +11,9 @@ namespace Aguamenti
 	{
 		for (const std::shared_ptr<PhysicsObject>& physicsObject : physicsObjects)
 		{
-			Aguamenti::ParticleComponent* particleComponent = Aguamenti::GetComponent<Aguamenti::ParticleComponent>(*physicsObject);
-			assert(particleComponent != nullptr);
-
 			for (const auto& force : forcesToApply)
 			{
-				force->ApplyForce(*particleComponent);
+				force->ApplyForceInContext(*physicsObject);
 			}
 		}
 	}

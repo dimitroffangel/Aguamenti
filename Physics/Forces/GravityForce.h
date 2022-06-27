@@ -10,13 +10,13 @@ namespace Aguamenti
 	{
 	public:
 		GravityForce(const Vector3 gravity)
-			: m_Gravity(gravity)
+			:  m_Gravity(gravity)
 		{
 
 		}
 
 	public:
-		virtual void ApplyForce(ParticleComponent& particle) override;
+		virtual void ApplyForce_Internal(ParticleComponent& particle) override;
 
 	private:
 		Vector3 m_Gravity;
