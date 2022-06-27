@@ -1,6 +1,7 @@
 #include <pch.h>
 
-#include <Physics/Forces/ForceHelper.h>
+#include <Physics/Systems/Forces/ForceHelper.h>
+
 #include <Physics/Forces/GravityForce.h>
 
 void Aguamenti::AddRelativeGravitationalForce(RelativeForceComponent& relativeComponent)

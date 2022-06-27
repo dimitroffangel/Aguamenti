@@ -35,6 +35,9 @@
     <Filter Include="Physics\Entity">
       <UniqueIdentifier>{fe12f256-69aa-44e3-b3b9-a686f31d0ec6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics\Systems\Forces">
+      <UniqueIdentifier>{90ebd45b-00d4-4552-9fe5-9251690dc82c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DirectXTK\Game.h">
@@ -67,9 +70,6 @@
     <ClInclude Include="Physics\Forces\Force.h">
       <Filter>Physics\Forces</Filter>
     </ClInclude>
-    <ClInclude Include="Physics\Forces\ForceHelper.h">
-      <Filter>Physics\Forces</Filter>
-    </ClInclude>
     <ClInclude Include="Physics\Forces\GravityForce.h">
       <Filter>Physics\Forces</Filter>
     </ClInclude>
@@ -92,6 +92,9 @@
     </ClInclude>
     <ClInclude Include="Physics\Components\RelativeForceComponent.h">
       <Filter>Physics\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Systems\Forces\ForceHelper.h">
+      <Filter>Physics\Systems\Forces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +125,6 @@
     </ClCompile>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="Physics\Forces\ForceHelper.cpp">
-      <Filter>Physics\Forces</Filter>
-    </ClCompile>
     <ClCompile Include="DirectXTK\Components\MeshComponent.cpp">
       <Filter>DirectXTK</Filter>
     </ClCompile>
@@ -142,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="Physics\Components\RelativeForceComponent.cpp">
       <Filter>Physics\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Systems\Forces\ForceHelper.cpp">
+      <Filter>Physics\Systems\Forces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

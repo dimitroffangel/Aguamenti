@@ -1,10 +1,13 @@
 #include <pch.h>
 
 #include <PhysicScenes/BulletScene.h>
+
 #include <Physics/Components/Particles/Particle.h>
-#include <DirectXTK/Components/MeshComponent.h>
-#include <Physics/Forces/ForceHelper.h>
+
+#include <Physics/Systems/Forces/ForceHelper.h>
 #include <Physics/Systems/Entity/PhysicsEntityHelper.h>
+
+#include <DirectXTK/Components/MeshComponent.h>
 
 #include <algorithm>
 
