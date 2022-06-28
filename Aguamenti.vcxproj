@@ -197,6 +197,7 @@
     <ClInclude Include="Physics\Forces\DragForce.h" />
     <ClInclude Include="Physics\Forces\Force.h" />
     <ClInclude Include="Physics\Forces\GravityForce.h" />
+    <ClInclude Include="Physics\Forces\SpringForce.h" />
     <ClInclude Include="Physics\Precision.h" />
     <ClInclude Include="Physics\Systems\Entity\PhysicsEntityHelper.h" />
     <ClInclude Include="Physics\Systems\Forces\ForceHelper.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="Physics\Entity\PhysicsEntity.cpp" />
     <ClCompile Include="Physics\Forces\DragForce.cpp" />
     <ClCompile Include="Physics\Forces\GravityForce.cpp" />
+    <ClCompile Include="Physics\Forces\SpringForce.cpp" />
     <ClCompile Include="Physics\Precision.cpp" />
     <ClCompile Include="Physics\Systems\Entity\PhysicsEntityHelper.cpp" />
     <ClCompile Include="Physics\Systems\Forces\ForceHelper.cpp" />

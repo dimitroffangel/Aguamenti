@@ -96,6 +96,9 @@
     <ClInclude Include="Physics\Systems\Forces\ForceHelper.h">
       <Filter>Physics\Systems\Forces</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\Forces\SpringForce.h">
+      <Filter>Physics\Forces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -145,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="Physics\Systems\Forces\ForceHelper.cpp">
       <Filter>Physics\Systems\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Forces\SpringForce.cpp">
+      <Filter>Physics\Forces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
