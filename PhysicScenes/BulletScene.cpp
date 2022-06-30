@@ -32,7 +32,7 @@ void BulletScene::AddParticle(ID3D11DeviceContext1& deviceContext, const Aguamen
 
 void BulletScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
 {
-    Aguamenti::ApplyForce(m_Forces, m_Particles);
+    Aguamenti::ApplyForce(deltaTime, m_Forces, m_Particles);
 
     for (const std::shared_ptr<Aguamenti::PhysicsEntity>& physicsEntity : m_Particles)
     {

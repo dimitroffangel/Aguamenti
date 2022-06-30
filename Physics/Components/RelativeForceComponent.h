@@ -14,11 +14,11 @@ namespace Aguamenti
 		// Inherited via Component
 		virtual void Update(const Real deltaTime) override;
 
-		virtual void ApplyForces(PhysicsEntity& physicsEntity)
+		virtual void ApplyForces(const Real deltaTime, PhysicsEntity& physicsEntity)
 		{
 			for (const std::shared_ptr<Force>& force : m_Forces)
 			{
-				force->ApplyForceInContext(physicsEntity);
+				force->ApplyForceInContext(deltaTime, physicsEntity);
 			}
 		}
 

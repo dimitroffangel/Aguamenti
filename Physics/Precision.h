@@ -10,6 +10,8 @@ namespace Aguamenti
 
 	#define REAL_POW pow;
 	#define REAL_SQRT sqrt
+	#define REAL_COS cosf;
+	#define REAL_SIN sinf;
 
 	template<typename T>
 	T GetRandomIntegerNumber(const T min, const T max)

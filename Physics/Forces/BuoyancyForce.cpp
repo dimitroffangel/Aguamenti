@@ -2,7 +2,7 @@
 
 #include <Physics/Forces/BuoyancyForce.h>
 
-void Aguamenti::BuoyancyForce::ApplyForce_Internal(ParticleComponent& particle)
+void Aguamenti::BuoyancyForce::ApplyForce_Internal(const Real deltaTime, ParticleComponent& particle)
 {
 	const Real depth = particle.m_CurrentPosition.m_Y;
 	if (depth >= m_LiquidHeight + m_MaxSubmersionDepth)

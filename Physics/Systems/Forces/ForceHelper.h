@@ -8,13 +8,13 @@
 namespace Aguamenti
 {
 	template<typename PhysicsObject>
-	void ApplyForce(const std::vector<std::unique_ptr<Force>>& forcesToApply, std::vector<std::shared_ptr<PhysicsObject>>& physicsObjects)
+	void ApplyForce(const Real deltaTime, const std::vector<std::unique_ptr<Force>>& forcesToApply, std::vector<std::shared_ptr<PhysicsObject>>& physicsObjects)
 	{
 		for (const std::shared_ptr<PhysicsObject>& physicsObject : physicsObjects)
 		{
 			for (const auto& force : forcesToApply)
 			{
-				force->ApplyForceInContext(*physicsObject);
+				force->ApplyForceInContext(deltaTime, *physicsObject);
 			}
 		}
 	}

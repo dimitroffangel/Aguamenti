@@ -99,6 +99,12 @@
     <ClInclude Include="Physics\Forces\SpringForce.h">
       <Filter>Physics\Forces</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\Forces\BuoyancyForce.h">
+      <Filter>Physics\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Forces\StiffSpringForce.h">
+      <Filter>Physics\Forces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -150,6 +156,12 @@
       <Filter>Physics\Systems\Forces</Filter>
     </ClCompile>
     <ClCompile Include="Physics\Forces\SpringForce.cpp">
+      <Filter>Physics\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Forces\StiffSpringForce.cpp">
+      <Filter>Physics\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Forces\BuoyancyForce.cpp">
       <Filter>Physics\Forces</Filter>
     </ClCompile>
   </ItemGroup>

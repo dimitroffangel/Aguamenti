@@ -2,11 +2,16 @@
 
 #include <Physics/Forces/SpringForce.h>
 
-void Aguamenti::SpringForce::ApplyForce_Internal(ParticleComponent& particle)
+void Aguamenti::SpringForce::ApplyForce_Internal(const Real deltaTime, ParticleComponent& particle)
 {
-	const Vector3 particlePosition = particle.m_CurrentPosition;
-	const Real particleMagnitude = (-m_SpringConstant) * (particlePosition.GetMagnitude() - m_DefaultSpringLength);
-	const Vector3 springForce = particle.m_CurrentPosition.GetNormalize() * particleMagnitude;
+	if (const std::shared_ptr<PhysicsEntity> otherSideEntity = m_OtherSideEntity.lock())
+	{
+		const ParticleComponent* const otherSideParticleComponent = GetComponent<ParticleComponent>(*otherSideEntity);
+		assert(otherSideParticleComponent != nullptr);
+		const Vector3 springVector = particle.m_CurrentPosition - otherSideParticleComponent->m_CurrentPosition;
+		const Real springVectorMagnitude = (-m_SpringConstant) * (springVector.GetMagnitude() - m_DefaultSpringLength);
+		const Vector3 springForce = springVector.GetNormalize() * springVectorMagnitude;
 
-	particle.AddForce(springForce);
+		particle.AddForce(springForce);
+	}
 }

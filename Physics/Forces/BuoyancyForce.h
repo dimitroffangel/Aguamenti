@@ -16,7 +16,7 @@ namespace Aguamenti
 
 	private:
 		// Inherited via Force
-		virtual void ApplyForce_Internal(ParticleComponent& particle) override;
+		virtual void ApplyForce_Internal(const Real deltaTime, ParticleComponent& particle) override;
 
 	private:
 		Real m_MaxSubmersionDepth;

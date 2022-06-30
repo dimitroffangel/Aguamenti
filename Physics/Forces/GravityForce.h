@@ -16,7 +16,7 @@ namespace Aguamenti
 		}
 
 	public:
-		virtual void ApplyForce_Internal(ParticleComponent& particle) override;
+		virtual void ApplyForce_Internal(const Real deltaTime, ParticleComponent& particle) override;
 
 	private:
 		Vector3 m_Gravity;

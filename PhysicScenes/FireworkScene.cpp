@@ -13,7 +13,7 @@
 
 void FireworkScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11DeviceContext1& deviceContext)
 {
-	Aguamenti::ApplyForce(m_Forces, m_Fireworks);
+	Aguamenti::ApplyForce(deltaTime, m_Forces, m_Fireworks);
 
 	const size_t currentNumberOfFireworksBeforeUpdate = m_Fireworks.size();
 	for (size_t i = 0; i < currentNumberOfFireworksBeforeUpdate; ++i)
@@ -29,7 +29,7 @@ void FireworkScene::UpdatePhysicsObjects(const Aguamenti::Real deltaTime, ID3D11
 
 		if (Aguamenti::RelativeForceComponent* relativeForceComponent = Aguamenti::GetComponent<Aguamenti::RelativeForceComponent>(*firework))
 		{
-			relativeForceComponent->ApplyForces(*firework);
+			relativeForceComponent->ApplyForces(deltaTime, *firework);
 		}
 
 		if (fireworkComponent->m_Age <= 0)

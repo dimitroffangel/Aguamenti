@@ -10,15 +10,15 @@ namespace Aguamenti
 	class Force
 	{
 	public:
-		void ApplyForceInContext(PhysicsEntity& physicsEntity)
+		void ApplyForceInContext(const Real deltaTime, PhysicsEntity& physicsEntity)
 		{
 			Aguamenti::ParticleComponent* particleComponent = GetComponent<Aguamenti::ParticleComponent>(physicsEntity);
 			assert(particleComponent != nullptr);
-			ApplyForce_Internal(*particleComponent);
+			ApplyForce_Internal(deltaTime, *particleComponent);
 		}
 
 	private:
-		virtual void ApplyForce_Internal(ParticleComponent& particle) = 0;
+		virtual void ApplyForce_Internal(const Real deltaTime, ParticleComponent& particle) = 0;
 	};
 }
 
