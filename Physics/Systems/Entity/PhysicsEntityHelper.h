@@ -30,6 +30,7 @@ namespace Aguamenti
 	}
 
 	template<typename T>
+		requires std::derived_from<T, Component>
 	bool HasComponent(const std::vector<std::unique_ptr<Component>>& components)
 	{
 		for (const auto& component : components)
