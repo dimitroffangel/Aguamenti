@@ -5,6 +5,7 @@ void Aguamenti::ResolveContact(const Real deltaTime, ParticleComponent* lhsParti
 {
 	if (lhsParticleComponent == nullptr)
 	{
+		assert(false && "Aguamenti::ResolveContact lhsParticleComponent does not exist");
 		return;
 	}
 
