@@ -193,6 +193,7 @@
     <ClInclude Include="Physics\Components\Particles\Particle.h" />
     <ClInclude Include="Physics\Components\RelativeForceComponent.h" />
     <ClInclude Include="Physics\Core.h" />
+    <ClInclude Include="Physics\Entity\CollisionInformation.h" />
     <ClInclude Include="Physics\Entity\PhysicsEntity.h" />
     <ClInclude Include="Physics\Forces\BuoyancyForce.h" />
     <ClInclude Include="Physics\Forces\DragForce.h" />
@@ -202,10 +203,12 @@
     <ClInclude Include="Physics\Forces\StiffSpringForce.h" />
     <ClInclude Include="Physics\Precision.h" />
     <ClInclude Include="Physics\Systems\CollisionHelper.h" />
+    <ClInclude Include="Physics\Systems\CollisionResolver.h" />
     <ClInclude Include="Physics\Systems\Entity\PhysicsEntityHelper.h" />
     <ClInclude Include="Physics\Systems\Forces\ForceHelper.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CollisionInformation.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DirectXTK\Common\DeviceResources.cpp" />
     <ClCompile Include="DirectXTK\Components\MeshComponent.cpp" />
@@ -228,6 +231,7 @@
     <ClCompile Include="Physics\Forces\StiffSpringForce.cpp" />
     <ClCompile Include="Physics\Precision.cpp" />
     <ClCompile Include="Physics\Systems\CollisionHelper.cpp" />
+    <ClCompile Include="Physics\Systems\CollisionResolver.cpp" />
     <ClCompile Include="Physics\Systems\Entity\PhysicsEntityHelper.cpp" />
     <ClCompile Include="Physics\Systems\Forces\ForceHelper.cpp" />
   </ItemGroup>

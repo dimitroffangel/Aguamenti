@@ -108,6 +108,10 @@
     <ClInclude Include="Physics\Systems\CollisionHelper.h">
       <Filter>Physics\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\Systems\CollisionResolver.h">
+      <Filter>Physics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Entity\CollisionInformation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -170,6 +174,10 @@
     <ClCompile Include="Physics\Systems\CollisionHelper.cpp">
       <Filter>Physics\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="Physics\Systems\CollisionResolver.cpp">
+      <Filter>Physics\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionInformation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

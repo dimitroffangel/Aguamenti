@@ -1,35 +1,41 @@
 #include <pch.h>
 #include <Physics/Systems/CollisionHelper.h>
 
-void Aguamenti::ResolveContact(const Real deltaTime, ParticleComponent* lhsParticleComponent, ParticleComponent* rhsParticleComponent, const Vector3 contactNormal, const Real restitution)
+bool Aguamenti::CalculateSeperatingVelocity(CollisionInformation& collisionInformation)
 {
-	if (lhsParticleComponent == nullptr)
+	if (collisionInformation.m_LhsParticleComponent == nullptr)
 	{
-		assert(false && "Aguamenti::ResolveContact lhsParticleComponent does not exist");
-		return;
+		assert(false && "Aguamenti::CalculateSeperatingVelocity collisionInformation.m_LhsParticleComponent  does not exist");
+		return false;
 	}
 
-	Vector3 deltaVelocityBetweenParticleComponents = lhsParticleComponent->m_Velocity;
-	if (rhsParticleComponent != nullptr)
+	Vector3 deltaVelocityBetweenParticleComponents = collisionInformation.m_LhsParticleComponent->m_Velocity;
+	if (collisionInformation.m_RhsParticleComponent != nullptr)
 	{
-		deltaVelocityBetweenParticleComponents -= rhsParticleComponent->m_Velocity;
+		deltaVelocityBetweenParticleComponents -= collisionInformation.m_RhsParticleComponent->m_Velocity;
 	}
-	const Real seperatingVelocity = deltaVelocityBetweenParticleComponents * contactNormal;
-	if (seperatingVelocity > 0)
+
+	collisionInformation.m_SeperationVelocity = deltaVelocityBetweenParticleComponents * collisionInformation.m_ContactNormal;
+	return true;
+}
+
+void Aguamenti::ResolveContact(const Real deltaTime, const CollisionInformation& collisionInformation)
+{
+	const Real separatingVelocity = collisionInformation.m_SeperationVelocity;
+	if (separatingVelocity > 0)
 	{
 		return;
 	}
-	Real newSeperatingVelocity = -seperatingVelocity * restitution;
-
-	Vector3 accelerationOfSeperatingVelocity = lhsParticleComponent->m_Acceleration;
-	if (rhsParticleComponent != nullptr)
+	Real newSeperatingVelocity = -separatingVelocity * collisionInformation.m_Restituion;
+	Vector3 accelerationOfSeperatingVelocity = collisionInformation.m_LhsParticleComponent->m_Acceleration;
+	if (collisionInformation.m_RhsParticleComponent != nullptr)
 	{
-		accelerationOfSeperatingVelocity -= rhsParticleComponent->m_Acceleration;
+		accelerationOfSeperatingVelocity -= collisionInformation.m_RhsParticleComponent->m_Acceleration;
 	}
-	const Real acceleratedSeperatingVelocity = accelerationOfSeperatingVelocity * contactNormal * deltaTime;
+	const Real acceleratedSeperatingVelocity = accelerationOfSeperatingVelocity * collisionInformation.m_ContactNormal * deltaTime;
 	if (acceleratedSeperatingVelocity < 0)
 	{
-		newSeperatingVelocity += restitution * acceleratedSeperatingVelocity;
+		newSeperatingVelocity += collisionInformation.m_Restituion * acceleratedSeperatingVelocity;
 
 		if (newSeperatingVelocity < 0)
 		{
@@ -37,49 +43,54 @@ void Aguamenti::ResolveContact(const Real deltaTime, ParticleComponent* lhsParti
 		}
 	}
 
-	const Real deltaSeperatingVelocity = newSeperatingVelocity - seperatingVelocity;
-	Real totalInverseMass = lhsParticleComponent->m_InverseMass;
-	if (rhsParticleComponent != nullptr)
+	const Real deltaSeperatingVelocity = newSeperatingVelocity - separatingVelocity;
+	Real totalInverseMass = collisionInformation.m_LhsParticleComponent->m_InverseMass;
+	if (collisionInformation.m_RhsParticleComponent != nullptr)
 	{
-		totalInverseMass += rhsParticleComponent->m_InverseMass;
+		totalInverseMass += collisionInformation.m_RhsParticleComponent->m_InverseMass;
 	}
 	// both objects are immovable
 	if (totalInverseMass <= 0)
 		return;
 
 	const Real impulse = deltaSeperatingVelocity / totalInverseMass;
-	const Vector3 directionPostContact = contactNormal * impulse;
-	lhsParticleComponent->m_Velocity += lhsParticleComponent->m_Velocity + directionPostContact * lhsParticleComponent->m_InverseMass;
-	if (rhsParticleComponent != nullptr)
+	const Vector3 directionPostContact = collisionInformation.m_ContactNormal * impulse;
+	collisionInformation.m_LhsParticleComponent->m_Velocity += 
+		collisionInformation.m_LhsParticleComponent->m_Velocity + 
+		directionPostContact * collisionInformation.m_LhsParticleComponent->m_InverseMass;
+	if (collisionInformation.m_RhsParticleComponent != nullptr)
 	{
-		rhsParticleComponent->m_Velocity += rhsParticleComponent->m_Velocity + directionPostContact *
-			rhsParticleComponent->m_InverseMass;
+		collisionInformation.m_RhsParticleComponent->m_Velocity += 
+			collisionInformation.m_RhsParticleComponent->m_Velocity + directionPostContact *
+			collisionInformation.m_RhsParticleComponent->m_InverseMass;
 	}
 }
 
-void Aguamenti::ResolveInterpenetration(const Real deltaTime, ParticleComponent* lhsParticleComponent, ParticleComponent* rhsParticleComponent, const Real penetrationLength, const Vector3 contactNormal)
+void Aguamenti::ResolveInterpenetration(const Real deltaTime, const CollisionInformation& collisionInformation)
 {
-	if (penetrationLength <= 0)
+	if (collisionInformation.m_PenetrationLength <= 0)
 	{
 		return;
 	}
-	if (lhsParticleComponent == nullptr)
+	if (collisionInformation.m_LhsParticleComponent == nullptr)
 	{
-		assert(false && "Aguamenti::ResolveInterpenetration lhsParticleComponent does not exist");
+		assert(false && "Aguamenti::ResolveInterpenetration collisionInformation.m_LhsParticleComponent does not exist");
 		return;
 	}
 
-	Real totalInverseMass = lhsParticleComponent->m_InverseMass;
-	if (rhsParticleComponent != nullptr)
+	Real totalInverseMass = collisionInformation.m_LhsParticleComponent->m_InverseMass;
+	if (collisionInformation.m_RhsParticleComponent != nullptr)
 	{
-		totalInverseMass += rhsParticleComponent->m_InverseMass;
+		totalInverseMass += collisionInformation.m_RhsParticleComponent->m_InverseMass;
 	}
-	const Vector3 moveBasedOnTotalInverseMass = contactNormal * (-penetrationLength * totalInverseMass);
-	lhsParticleComponent->m_CurrentPosition += lhsParticleComponent->m_CurrentPosition + moveBasedOnTotalInverseMass *
-		lhsParticleComponent->m_InverseMass;
-	if (rhsParticleComponent != nullptr)
+	const Vector3 moveBasedOnTotalInverseMass = collisionInformation.m_ContactNormal * (-collisionInformation.m_PenetrationLength* totalInverseMass);
+	collisionInformation.m_LhsParticleComponent->m_CurrentPosition += 
+		collisionInformation.m_LhsParticleComponent->m_CurrentPosition + moveBasedOnTotalInverseMass *
+		collisionInformation.m_LhsParticleComponent->m_InverseMass;
+	if (collisionInformation.m_RhsParticleComponent != nullptr)
 	{
-		rhsParticleComponent->m_CurrentPosition += rhsParticleComponent->m_CurrentPosition + moveBasedOnTotalInverseMass *
-			rhsParticleComponent->m_InverseMass;
+		collisionInformation.m_RhsParticleComponent->m_CurrentPosition += 
+			collisionInformation.m_RhsParticleComponent->m_CurrentPosition + moveBasedOnTotalInverseMass *
+			collisionInformation.m_RhsParticleComponent->m_InverseMass;
 	}
 }
