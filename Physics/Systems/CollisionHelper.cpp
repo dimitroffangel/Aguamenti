@@ -1,11 +1,11 @@
 #include <pch.h>
 #include <Physics/Systems/CollisionHelper.h>
 
-bool Aguamenti::CalculateSeperatingVelocity(CollisionInformation& collisionInformation)
+bool Aguamenti::CalculateSeparatingVelocity(CollisionInformation& collisionInformation)
 {
 	if (collisionInformation.m_LhsParticleComponent == nullptr)
 	{
-		assert(false && "Aguamenti::CalculateSeperatingVelocity collisionInformation.m_LhsParticleComponent  does not exist");
+		assert(false && "Aguamenti::CalculateSeparatingVelocity collisionInformation.m_LhsParticleComponent(the particle's component from which point the collision is happnenning) does not exist");
 		return false;
 	}
 
@@ -15,35 +15,35 @@ bool Aguamenti::CalculateSeperatingVelocity(CollisionInformation& collisionInfor
 		deltaVelocityBetweenParticleComponents -= collisionInformation.m_RhsParticleComponent->m_Velocity;
 	}
 
-	collisionInformation.m_SeperationVelocity = deltaVelocityBetweenParticleComponents * collisionInformation.m_ContactNormal;
+	collisionInformation.m_SeparationVelocity = deltaVelocityBetweenParticleComponents * collisionInformation.m_ContactNormal;
 	return true;
 }
 
 void Aguamenti::ResolveContact(const Real deltaTime, const CollisionInformation& collisionInformation)
 {
-	const Real separatingVelocity = collisionInformation.m_SeperationVelocity;
+	const Real separatingVelocity = collisionInformation.m_SeparationVelocity;
 	if (separatingVelocity > 0)
 	{
 		return;
 	}
-	Real newSeperatingVelocity = -separatingVelocity * collisionInformation.m_Restituion;
-	Vector3 accelerationOfSeperatingVelocity = collisionInformation.m_LhsParticleComponent->m_Acceleration;
+	Real newSeparatingVelocity = -separatingVelocity * collisionInformation.m_Restituion;
+	Vector3 accelerationOfSeparatingVelocity = collisionInformation.m_LhsParticleComponent->m_Acceleration;
 	if (collisionInformation.m_RhsParticleComponent != nullptr)
 	{
-		accelerationOfSeperatingVelocity -= collisionInformation.m_RhsParticleComponent->m_Acceleration;
+		accelerationOfSeparatingVelocity -= collisionInformation.m_RhsParticleComponent->m_Acceleration;
 	}
-	const Real acceleratedSeperatingVelocity = accelerationOfSeperatingVelocity * collisionInformation.m_ContactNormal * deltaTime;
-	if (acceleratedSeperatingVelocity < 0)
+	const Real acceleratedSeparatingVelocity = accelerationOfSeparatingVelocity * collisionInformation.m_ContactNormal * deltaTime;
+	if (acceleratedSeparatingVelocity < 0)
 	{
-		newSeperatingVelocity += collisionInformation.m_Restituion * acceleratedSeperatingVelocity;
+		newSeparatingVelocity += collisionInformation.m_Restituion * acceleratedSeparatingVelocity;
 
-		if (newSeperatingVelocity < 0)
+		if (newSeparatingVelocity < 0)
 		{
-			newSeperatingVelocity = 0;
+			newSeparatingVelocity = 0;
 		}
 	}
 
-	const Real deltaSeperatingVelocity = newSeperatingVelocity - separatingVelocity;
+	const Real deltaSeparatingVelocity = newSeparatingVelocity - separatingVelocity;
 	Real totalInverseMass = collisionInformation.m_LhsParticleComponent->m_InverseMass;
 	if (collisionInformation.m_RhsParticleComponent != nullptr)
 	{
@@ -53,7 +53,7 @@ void Aguamenti::ResolveContact(const Real deltaTime, const CollisionInformation&
 	if (totalInverseMass <= 0)
 		return;
 
-	const Real impulse = deltaSeperatingVelocity / totalInverseMass;
+	const Real impulse = deltaSeparatingVelocity / totalInverseMass;
 	const Vector3 directionPostContact = collisionInformation.m_ContactNormal * impulse;
 	collisionInformation.m_LhsParticleComponent->m_Velocity += 
 		collisionInformation.m_LhsParticleComponent->m_Velocity + 
@@ -74,7 +74,7 @@ void Aguamenti::ResolveInterpenetration(const Real deltaTime, const CollisionInf
 	}
 	if (collisionInformation.m_LhsParticleComponent == nullptr)
 	{
-		assert(false && "Aguamenti::ResolveInterpenetration collisionInformation.m_LhsParticleComponent does not exist");
+		assert(false && "Aguamenti::ResolveInterpenetration collisionInformation.m_LhsParticleComponent(the particle's component from which point the collision is happnenning) does not exist");
 		return;
 	}
 

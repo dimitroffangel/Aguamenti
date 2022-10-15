@@ -8,7 +8,7 @@
 
 namespace Aguamenti
 {
-	bool CalculateSeperatingVelocity(CollisionInformation& collisionInformation);
+	bool CalculateSeparatingVelocity(CollisionInformation& collisionInformation);
 	void ResolveContact(const Real deltaTime, const CollisionInformation& collisionInformation);
 	void ResolveInterpenetration(const Real deltaTime, const CollisionInformation& collisionInformation);
 }

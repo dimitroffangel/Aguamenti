@@ -14,7 +14,7 @@ namespace Aguamenti
 		ParticleComponent* m_LhsParticleComponent;
 		ParticleComponent* m_RhsParticleComponent;
 		Vector3 m_ContactNormal;
-		Real m_SeperationVelocity;
+		Real m_SeparationVelocity;
 		Real m_Restituion = RESTITUTION_DEFAULT;
 		Real m_PenetrationLength;
 	};

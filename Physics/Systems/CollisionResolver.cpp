@@ -7,7 +7,7 @@ void Aguamenti::CollisionResolver::ResolveContacts(const Real deltaTime, std::ve
 {
 	auto collisionInformationComparator = [](const CollisionInformation& lhs, const CollisionInformation& rhs)
 	{
-		if (lhs.m_SeperationVelocity > rhs.m_SeperationVelocity)
+		if (lhs.m_SeparationVelocity > rhs.m_SeparationVelocity)
 		{
 			return true;
 		}
