@@ -19,7 +19,24 @@ void Aguamenti::ResolveContact(const Real deltaTime, ParticleComponent* lhsParti
 	{
 		return;
 	}
-	const Real newSeperatingVelocity = -seperatingVelocity * restitution;
+	Real newSeperatingVelocity = -seperatingVelocity * restitution;
+
+	Vector3 accelerationOfSeperatingVelocity = lhsParticleComponent->m_Acceleration;
+	if (rhsParticleComponent != nullptr)
+	{
+		accelerationOfSeperatingVelocity -= rhsParticleComponent->m_Acceleration;
+	}
+	const Real acceleratedSeperatingVelocity = accelerationOfSeperatingVelocity * contactNormal * deltaTime;
+	if (acceleratedSeperatingVelocity < 0)
+	{
+		newSeperatingVelocity += restitution * acceleratedSeperatingVelocity;
+
+		if (newSeperatingVelocity < 0)
+		{
+			newSeperatingVelocity = 0;
+		}
+	}
+
 	const Real deltaSeperatingVelocity = newSeperatingVelocity - seperatingVelocity;
 	Real totalInverseMass = lhsParticleComponent->m_InverseMass;
 	if (rhsParticleComponent != nullptr)
