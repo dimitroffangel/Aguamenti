@@ -11,8 +11,8 @@ namespace Aguamenti
 
 	struct CollisionInformation
 	{
-		ParticleComponent* m_LhsParticleComponent;
-		ParticleComponent* m_RhsParticleComponent;
+		std::weak_ptr<ParticleComponent> m_LhsParticleComponent;
+		std::weak_ptr<ParticleComponent> m_RhsParticleComponent;
 		Vector3 m_ContactNormal;
 		Real m_SeparationVelocity;
 		Real m_Restituion = RESTITUTION_DEFAULT;
