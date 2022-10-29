@@ -111,7 +111,9 @@
     <ClInclude Include="Physics\Systems\CollisionResolver.h">
       <Filter>Physics\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Physics\Entity\CollisionInformation.h" />
+    <ClInclude Include="Physics\Entity\CollisionInformation.h">
+      <Filter>Physics\Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -177,7 +179,9 @@
     <ClCompile Include="Physics\Systems\CollisionResolver.cpp">
       <Filter>Physics\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionInformation.cpp" />
+    <ClCompile Include="Physics\Entity\CollisionInformation.cpp">
+      <Filter>Physics\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

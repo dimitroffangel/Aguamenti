@@ -2,12 +2,11 @@
 #define AGUAMENTI_PHYSICSSCENE_H
 
 #include <pch.h>
+#include <vector>
 
 #include <Physics/Precision.h>
 #include <Physics/Core.h>
 #include <Physics/Forces/Force.h>
-
-#include <vector>
 
 using namespace DirectX;
 

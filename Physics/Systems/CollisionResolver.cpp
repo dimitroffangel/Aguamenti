@@ -28,4 +28,11 @@ void Aguamenti::CollisionResolver::ResolveContacts(const Real deltaTime, std::ve
 
 		collisionsOrdered.pop();
 	}
+
+	collisionInformations.clear();
+	while (!collisionsOrdered.empty())
+	{
+		collisionInformations.push_back(collisionsOrdered.top());
+		collisionsOrdered.pop();
+	}
 }

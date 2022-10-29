@@ -1,10 +1,8 @@
 #include <pch.h>
 
 #include <PhysicScenes/FireworkScene.h>
-
 #include <Physics/Systems/Forces/ForceHelper.h>
 #include <Physics/Systems/Entity/PhysicsEntityHelper.h>
-
 #include <Physics/Components/RelativeForceComponent.h>
 
 #include <DirectXTK/Components/MeshComponent.h>
