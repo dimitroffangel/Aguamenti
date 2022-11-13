@@ -10,7 +10,7 @@ namespace Aguamenti
 	struct ConstraintExecutionContext
 	{
 		std::weak_ptr<PhysicsEntity> m_ConstraintEntity;
-		std::vector<std::weak_ptr<PhysicsEntity>> m_AfflictedEntityByConstraint;
+		std::vector<std::weak_ptr<PhysicsEntity>> m_AfflictedEntitiesByConstraint;
 	};
 
 	class Constraint

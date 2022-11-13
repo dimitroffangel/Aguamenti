@@ -12,13 +12,13 @@ void Aguamenti::RopeConstraint::ApplyConstraintInContext(const Real deltaTime, C
 	{
 		return;
 	}
-	if (constraintExecutionContext.m_AfflictedEntityByConstraint.size() != 1 || constraintExecutionContext.m_AfflictedEntityByConstraint[0].expired())
+	if (constraintExecutionContext.m_AfflictedEntitiesByConstraint.size() != 1 || constraintExecutionContext.m_AfflictedEntitiesByConstraint[0].expired())
 	{
 		return;
 	}
 
 	PhysicsEntity& constraintEntity = *constraintExecutionContext.m_ConstraintEntity.lock();
-	PhysicsEntity& entityTightToTheRope = *constraintExecutionContext.m_AfflictedEntityByConstraint[0].lock();
+	PhysicsEntity& entityTightToTheRope = *constraintExecutionContext.m_AfflictedEntitiesByConstraint[0].lock();
 	
 	ParticleComponent* constraintEntityParticleComponent = GetComponent<ParticleComponent>(constraintEntity);
 	if (constraintEntityParticleComponent == nullptr)
@@ -39,7 +39,7 @@ void Aguamenti::RopeConstraint::ApplyConstraintInContext(const Real deltaTime, C
 	}
 
 	m_CollisionInformation.m_LhsPhysicsEntity = constraintExecutionContext.m_ConstraintEntity;
-	m_CollisionInformation.m_RhsPhysicsEntity = constraintExecutionContext.m_AfflictedEntityByConstraint[0];
+	m_CollisionInformation.m_RhsPhysicsEntity = constraintExecutionContext.m_AfflictedEntitiesByConstraint[0];
 
 	const Vector3 normal = distanceVector.GetNormalize();
 	m_CollisionInformation.m_ContactNormal = normal;
