@@ -189,9 +189,12 @@
     <ClInclude Include="PhysicScenes\BulletScene.h" />
     <ClInclude Include="PhysicScenes\FireworkScene.h" />
     <ClInclude Include="PhysicScenes\PhysicsScene.h" />
+    <ClInclude Include="Physics\Components\ConstraintComponent.h" />
     <ClInclude Include="Physics\Components\Particles\FireworkComponent.h" />
     <ClInclude Include="Physics\Components\Particles\Particle.h" />
     <ClInclude Include="Physics\Components\RelativeForceComponent.h" />
+    <ClInclude Include="Physics\Constraints\RopeConstraint.h" />
+    <ClInclude Include="Physics\Constraints\Constraint.h" />
     <ClInclude Include="Physics\Core.h" />
     <ClInclude Include="Physics\Entity\CollisionInformation.h" />
     <ClInclude Include="Physics\Entity\PhysicsEntity.h" />
@@ -221,9 +224,12 @@
     <ClCompile Include="PhysicScenes\BulletScene.cpp" />
     <ClCompile Include="PhysicScenes\FireworkScene.cpp" />
     <ClCompile Include="PhysicScenes\PhysicsScene.cpp" />
+    <ClCompile Include="Physics\Components\ConstraintComponent.cpp" />
     <ClCompile Include="Physics\Components\Particles\FireworkComponent.cpp" />
     <ClCompile Include="Physics\Components\Particles\Particle.cpp" />
     <ClCompile Include="Physics\Components\RelativeForceComponent.cpp" />
+    <ClCompile Include="Physics\Constraints\Constraint.cpp" />
+    <ClCompile Include="Physics\Constraints\RopeConstraint.cpp" />
     <ClCompile Include="Physics\Entity\CollisionInformation.cpp" />
     <ClCompile Include="Physics\Entity\PhysicsEntity.cpp" />
     <ClCompile Include="Physics\Forces\BuoyancyForce.cpp" />

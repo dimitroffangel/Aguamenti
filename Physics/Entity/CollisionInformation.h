@@ -3,7 +3,7 @@
 
 #include <Physics/Core.h>
 
-class ParticleComponent;
+class PhysicsEntity;
 
 namespace Aguamenti
 {
@@ -11,8 +11,8 @@ namespace Aguamenti
 
 	struct CollisionInformation
 	{
-		std::weak_ptr<ParticleComponent> m_LhsParticleComponent;
-		std::weak_ptr<ParticleComponent> m_RhsParticleComponent;
+		std::weak_ptr<PhysicsEntity> m_LhsPhysicsEntity;
+		std::weak_ptr<PhysicsEntity> m_RhsPhysicsEntity;
 		Vector3 m_ContactNormal;
 		Real m_SeparationVelocity;
 		Real m_Restituion = RESTITUTION_DEFAULT;

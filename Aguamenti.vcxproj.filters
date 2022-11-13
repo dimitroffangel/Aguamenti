@@ -38,6 +38,12 @@
     <Filter Include="Physics\Systems\Forces">
       <UniqueIdentifier>{90ebd45b-00d4-4552-9fe5-9251690dc82c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics\Systems\Collision">
+      <UniqueIdentifier>{80cd742e-cc86-4469-ada5-971f0bcb127c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Constraints">
+      <UniqueIdentifier>{ccc5e943-bfed-4570-9de0-5168d78c546a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DirectXTK\Game.h">
@@ -105,14 +111,23 @@
     <ClInclude Include="Physics\Forces\StiffSpringForce.h">
       <Filter>Physics\Forces</Filter>
     </ClInclude>
-    <ClInclude Include="Physics\Systems\CollisionHelper.h">
-      <Filter>Physics\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics\Systems\CollisionResolver.h">
-      <Filter>Physics\Systems</Filter>
-    </ClInclude>
     <ClInclude Include="Physics\Entity\CollisionInformation.h">
       <Filter>Physics\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Components\ConstraintComponent.h">
+      <Filter>Physics\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Systems\CollisionHelper.h">
+      <Filter>Physics\Systems\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Systems\CollisionResolver.h">
+      <Filter>Physics\Systems\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Constraints\Constraint.h">
+      <Filter>Physics\Constraints</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Constraints\RopeConstraint.h">
+      <Filter>Physics\Constraints</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,14 +188,23 @@
     <ClCompile Include="Physics\Forces\BuoyancyForce.cpp">
       <Filter>Physics\Forces</Filter>
     </ClCompile>
-    <ClCompile Include="Physics\Systems\CollisionHelper.cpp">
-      <Filter>Physics\Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics\Systems\CollisionResolver.cpp">
-      <Filter>Physics\Systems</Filter>
-    </ClCompile>
     <ClCompile Include="Physics\Entity\CollisionInformation.cpp">
       <Filter>Physics\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Components\ConstraintComponent.cpp">
+      <Filter>Physics\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Systems\CollisionHelper.cpp">
+      <Filter>Physics\Systems\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Systems\CollisionResolver.cpp">
+      <Filter>Physics\Systems\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Constraints\Constraint.cpp">
+      <Filter>Physics\Constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Constraints\RopeConstraint.cpp">
+      <Filter>Physics\Constraints</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

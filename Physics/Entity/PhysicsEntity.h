@@ -2,6 +2,7 @@
 #define AGUAMENTI_PHYSICSENTITY_H
 
 class Component;
+#include <Component.h>
 
 namespace Aguamenti
 {

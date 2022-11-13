@@ -1,8 +1,6 @@
 #ifndef AGUAMENTI_PHYSICSENTITYHELPER_H
 #define AGUAMENTI_PHYSICSENTITYHELPER_H
 
-class Component;
-
 #include <iostream>
 #include <Component.h>
 #include <Physics/Entity/PhysicsEntity.h>
@@ -62,18 +60,16 @@ namespace Aguamenti
 		requires std::derived_from<T, Component>
 	T* GetComponent(const PhysicsEntity& physicsEntity)
 	{
-		if (!HasComponent<T>(physicsEntity.m_Components))
-		{
-			return nullptr;
-		}
-
+		const size_t templateHashCode = typeid(T).hash_code();
 		for (auto& component : physicsEntity.m_Components)
 		{
 			const size_t componentNameHashCode = typeid(*component).hash_code();
 
-			if (typeid(T).hash_code() == componentNameHashCode)
+			if (templateHashCode == componentNameHashCode)
 				return static_cast<T*>(component.get());
 		}
+
+		return nullptr;
 	}
 }
 
