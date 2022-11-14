@@ -47,8 +47,9 @@ public:
     // Properties
     void GetDefaultSize( int& width, int& height ) const noexcept;
 private:
-    void CreateMouseResources(HWND window);
+    void CreateInputResources(HWND window);
     void HandleMouseEvent(const float deltaTime);
+    void HandleKeyboardEvent(const float deltaTime);
 
 private:
 
@@ -71,6 +72,7 @@ private:
     DirectX::SimpleMath::Matrix m_View;
     DirectX::SimpleMath::Matrix m_Projection;
     std::unique_ptr<DirectX::Mouse> m_Mouse;
+    std::unique_ptr<DirectX::Keyboard> m_Keyboard;
     
     // Physics Specific
     std::unique_ptr<PhysicsScene> m_PhysicsScene;

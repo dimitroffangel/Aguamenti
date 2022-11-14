@@ -39,7 +39,7 @@ void Game::Initialize(HWND window, int width, int height)
     m_DeviceResources->CreateWindowSizeDependentResources();
     CreateWindowSizeDependentResources();
 
-    CreateMouseResources(window);
+    CreateInputResources(window);
 
     // TODO: Change the timer settings if you want something other than the default variable timestep mode.
     // e.g. for 60 FPS fixed timestep update logic, call:
@@ -68,6 +68,7 @@ void Game::Update(DX::StepTimer const& timer)
 
     // TODO: Add your game logic here.
     HandleMouseEvent(elapsedTime);
+    HandleKeyboardEvent(elapsedTime);
     ID3D11DeviceContext1* const deviceContext = m_DeviceResources->GetD3DDeviceContext();
     assert(deviceContext != nullptr);
     m_PhysicsScene->UpdatePhysicsObjects(elapsedTime, *deviceContext);
@@ -175,10 +176,11 @@ void Game::GetDefaultSize(int& width, int& height) const noexcept
     width = 800;
     height = 600;
 }
-void Game::CreateMouseResources(HWND window)
+void Game::CreateInputResources(HWND window)
 {
     m_Mouse = std::make_unique<Mouse>();
     m_Mouse->SetWindow(window);
+    m_Keyboard = std::make_unique<Keyboard>();
 }
 void Game::HandleMouseEvent(const float deltaTime)
 {
@@ -186,6 +188,15 @@ void Game::HandleMouseEvent(const float deltaTime)
     ID3D11DeviceContext1* const deviceContext = m_DeviceResources->GetD3DDeviceContext();
     assert(deviceContext != nullptr);
     m_PhysicsScene->HandleMouseEvent(deltaTime, mouseState, *deviceContext);
+}
+
+void Game::HandleKeyboardEvent(const float deltaTime)
+{
+    auto keyboardState = m_Keyboard->GetState();
+    if (keyboardState.Escape)
+    {
+        ExitGame();
+    }
 }
 #pragma endregion
 
@@ -216,6 +227,7 @@ void Game::OnDeviceLost()
 {
     // TODO: Add Direct3D resource cleanup here.
     m_Mouse.reset();
+    m_Keyboard.reset();
 }
 
 void Game::OnDeviceRestored()

@@ -132,6 +132,9 @@
     <ClInclude Include="Physics\Constraints\ImmovableRodConstraint.h">
       <Filter>Physics\Constraints</Filter>
     </ClInclude>
+    <ClInclude Include="PhysicScenes\BridgeDemo.h">
+      <Filter>PhysicScenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -211,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="Physics\Constraints\ImmovableRodConstraint.cpp">
       <Filter>Physics\Constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicScenes\BridgeDemo.cpp">
+      <Filter>PhysicScenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
