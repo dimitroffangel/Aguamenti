@@ -129,6 +129,9 @@
     <ClInclude Include="Physics\Constraints\RopeConstraint.h">
       <Filter>Physics\Constraints</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\Constraints\ImmovableRodConstraint.h">
+      <Filter>Physics\Constraints</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -204,6 +207,9 @@
       <Filter>Physics\Constraints</Filter>
     </ClCompile>
     <ClCompile Include="Physics\Constraints\RopeConstraint.cpp">
+      <Filter>Physics\Constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Constraints\ImmovableRodConstraint.cpp">
       <Filter>Physics\Constraints</Filter>
     </ClCompile>
   </ItemGroup>
