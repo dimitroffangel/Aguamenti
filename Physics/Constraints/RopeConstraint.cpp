@@ -38,11 +38,13 @@ void Aguamenti::RopeConstraint::ApplyConstraintInContext(const Real deltaTime, C
 		return;
 	}
 
-	m_CollisionInformation.m_LhsPhysicsEntity = constraintExecutionContext.m_ConstraintEntity;
-	m_CollisionInformation.m_RhsPhysicsEntity = constraintExecutionContext.m_AfflictedEntitiesByConstraint[0];
+	CollisionInformation collisionInformation;
+	collisionInformation.m_LhsPhysicsEntity = constraintExecutionContext.m_ConstraintEntity;
+	collisionInformation.m_RhsPhysicsEntity = constraintExecutionContext.m_AfflictedEntitiesByConstraint[0];
 
 	const Vector3 normal = distanceVector.GetNormalize();
-	m_CollisionInformation.m_ContactNormal = normal;
-	m_CollisionInformation.m_PenetrationLength = m_MaxCableLength;
-	m_CollisionInformation.m_Restituion = m_MaxResitution;
+	collisionInformation.m_ContactNormal = normal;
+	collisionInformation.m_PenetrationLength = m_MaxCableLength;
+	collisionInformation.m_Restituion = m_MaxResitution;
+	m_CollisionInformations.push_back(collisionInformation);
 }

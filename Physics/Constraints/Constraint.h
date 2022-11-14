@@ -21,7 +21,7 @@ namespace Aguamenti
 
 		}
 		
-		CollisionInformation m_CollisionInformation;
+		std::vector<CollisionInformation> m_CollisionInformations;
 
 		virtual void ApplyConstraintInContext(const Real deltaTime, ConstraintExecutionContext& constraintExecutionContext) = 0;
 	};
