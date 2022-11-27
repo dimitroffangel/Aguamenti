@@ -25,7 +25,7 @@ Game::Game() noexcept(false)
     m_DeviceResources->RegisterDeviceNotify(this);
 
     m_PhysicsScene = std::make_unique<BridgeScene>();
-    m_PhysicsScene->AddGravitationalForce(Aguamenti::Vector3(0, -0.0002f, 0));
+    //m_PhysicsScene->AddGravitationalForce(Aguamenti::Vector3(0, -0.0002f, 0));
     m_PhysicsScene->AddDragForce(0.05f, 0.01f);
 }
 
