@@ -9,6 +9,12 @@ void Aguamenti::ParticleComponent::AddForce(const Aguamenti::Vector3 forceToAdd)
 
 void Aguamenti::ParticleComponent::Integrate(const Aguamenti::Real deltaTime)
 {
+	// the object is treated as immovable
+	if (m_InverseMass <= 0)
+	{
+		return;
+	}
+
 	// 0.5*a*t^2 -> may cause cause floating problems
 	m_CurrentPosition.AddScaledVector(m_Velocity, deltaTime);
 	m_CurrentPosition.AddScaledVector(m_Acceleration, deltaTime * deltaTime * 0.5f);
