@@ -8,6 +8,7 @@
 
 #include <PhysicScenes/FireworkScene.h>
 #include <PhysicScenes/BulletScene.h>
+#include <PhysicScenes/BridgeDemo.h>
 
 extern void ExitGame() noexcept;
 
@@ -23,7 +24,7 @@ Game::Game() noexcept(false)
     //   Add DX::DeviceResources::c_EnableHDR for HDR10 display.
     m_DeviceResources->RegisterDeviceNotify(this);
 
-    m_PhysicsScene = std::make_unique<FireworkScene>();
+    m_PhysicsScene = std::make_unique<BridgeScene>();
     m_PhysicsScene->AddGravitationalForce(Aguamenti::Vector3(0, -0.0002f, 0));
     m_PhysicsScene->AddDragForce(0.05f, 0.01f);
 }
@@ -197,6 +198,10 @@ void Game::HandleKeyboardEvent(const float deltaTime)
     {
         ExitGame();
     }
+
+    ID3D11DeviceContext1* const deviceContext = m_DeviceResources->GetD3DDeviceContext();
+    assert(deviceContext != nullptr);
+    m_PhysicsScene->HandleKeyboardEvent(deltaTime, keyboardState, *deviceContext);
 }
 #pragma endregion
 

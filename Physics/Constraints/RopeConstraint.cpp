@@ -5,6 +5,7 @@
 #include <Physics/Components/Particles/Particle.h>
 #include <Physics/Entity/PhysicsEntity.h>
 #include <Physics/Systems/Entity/PhysicsEntityHelper.h>
+#include <Physics/Systems/CollisionHelper.h>
 
 void Aguamenti::RopeConstraint::ApplyConstraintInContext(const Real deltaTime, ConstraintExecutionContext& constraintExecutionContext)
 {
@@ -46,5 +47,8 @@ void Aguamenti::RopeConstraint::ApplyConstraintInContext(const Real deltaTime, C
 	collisionInformation.m_ContactNormal = normal;
 	collisionInformation.m_PenetrationLength = m_MaxCableLength;
 	collisionInformation.m_Restituion = m_MaxResitution;
+
+	CalculateSeparatingVelocity(collisionInformation);
+
 	m_CollisionInformations.push_back(collisionInformation);
 }

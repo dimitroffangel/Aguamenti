@@ -4,7 +4,7 @@
 
 void BridgeScene::DrawPhysicsObjects(const DirectX::SimpleMath::Matrix& matrixView, const DirectX::SimpleMath::Matrix& matrixProjection)
 {
-    for (const auto& physicsObject : m_Particles)
+    for (const auto& physicsObject : m_PlayerParticles)
     {
         Aguamenti::ParticleComponent* particleComponent = Aguamenti::GetComponent<Aguamenti::ParticleComponent>(*physicsObject);
         assert(particleComponent != nullptr);
@@ -17,4 +17,50 @@ void BridgeScene::DrawPhysicsObjects(const DirectX::SimpleMath::Matrix& matrixVi
 
 void BridgeScene::HandleMouseEvent(const float deltaTime, const DirectX::Mouse::State mouseState, ID3D11DeviceContext1& deviceContext)
 {
+    if (m_HasCreatedPlayerParticle)
+    {
+        m_TimerBeforeAnotherBullet += deltaTime;
+        if (m_TimerBeforeAnotherBullet > BULLET_BURST_TIME)
+        {
+            m_TimerBeforeAnotherBullet = 0.f;
+            m_HasCreatedPlayerParticle = false;
+        }
+
+        return;
+    }
+
+    if (!mouseState.leftButton)
+    {
+        return;
+    }
+
+    std::shared_ptr<Aguamenti::PhysicsEntity> physicsEntity = std::make_shared<Aguamenti::PhysicsEntity>();
+    Aguamenti::AddComponent<Aguamenti::ParticleComponent>(*physicsEntity);
+    Aguamenti::ParticleComponent* particleComponent = GetComponent<Aguamenti::ParticleComponent>(*physicsEntity);
+    assert(particleComponent != nullptr);
+    particleComponent->m_InverseMass = 32.f;
+    particleComponent->m_Velocity = Aguamenti::Vector3(0.f, 0.f, 0.f);
+    particleComponent->m_Acceleration = Aguamenti::Vector3(0.f, 0, 0.f);
+    particleComponent->m_Damping = 0.99f;
+    particleComponent->m_CurrentPosition = Aguamenti::Vector3(-1.f, 0.f, 0.f);
+
+    Aguamenti::AddComponent<Aguamenti::MeshComponent>(*physicsEntity);
+    Aguamenti::MeshComponent* meshComponent = GetComponent<Aguamenti::MeshComponent>(*physicsEntity);
+    meshComponent->m_DXTK_GeometrixPrimitive = std::move(DirectX::GeometricPrimitive::CreateSphere(&deviceContext, 0.1f));
+
+    m_PlayerParticles.push_back(physicsEntity);
+}
+
+void BridgeScene::HandleKeyboardEvent(const float deltaTime, const DirectX::Keyboard::State keyboardState, ID3D11DeviceContext1& deviceContext)
+{
+    if (keyboardState.Right)
+    {
+        for (const auto playerParticle : m_PlayerParticles)
+        {
+            Aguamenti::ParticleComponent* particleComponent = Aguamenti::GetComponent<Aguamenti::ParticleComponent>(*playerParticle);
+            assert(particleComponent != nullptr);
+
+            particleComponent->m_CurrentPosition += Aguamenti::Vector3(0.001, 0, 0);
+        }
+    }
 }

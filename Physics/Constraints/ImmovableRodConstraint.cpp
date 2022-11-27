@@ -4,6 +4,7 @@
 #include <Physics/Components/Particles/Particle.h>
 #include <Physics/Entity/PhysicsEntity.h>
 #include <Physics/Systems/Entity/PhysicsEntityHelper.h>
+#include <Physics/Systems/CollisionHelper.h>
 
 void Aguamenti::ImmovableRodConstraint::ApplyConstraintInContext(const Real deltaTime, ConstraintExecutionContext& constraintExecutionContext)
 {
@@ -50,4 +51,7 @@ void Aguamenti::ImmovableRodConstraint::ApplyConstraintInContext(const Real delt
 		collisionInformation.m_ContactNormal = normalizedDistanceVector * (-1);
 		collisionInformation.m_PenetrationLength = m_Length - currentLength;
 	}
+	
+	CalculateSeparatingVelocity(collisionInformation);
+	m_CollisionInformations.push_back(collisionInformation);
 }
